@@ -1,0 +1,40 @@
+﻿@model IPVC_Escuta_Vs11.ViewModels.CreateUserAdminViewModel
+
+@{
+    ViewBag.Title = "Criar Utilizador";
+}
+
+<h2>Criar Utilizador</h2>
+
+<form id="createUserForm" asp-action="CreateUser" asp-controller="User" method="post">
+    <div>
+        <label asp-for="FirstName">Primeiro Nome:</label>
+        <input  asp-for="FirstName" required />
+    </div>
+    <div>
+        <label asp-for="LastName">Último Nome:</label>
+        <input asp-for="LastName" required />
+    </div>
+    <div>
+        <label asp-for="Email">Email:</label>
+        <input asp-for="Email" type="email" required />
+    </div>
+    <div>
+        <label asp-for="Address">Morada:</label>
+        <input asp-for="Address" />
+    </div>
+    <div>
+        <label asp-for="Password">Senha:</label>
+        <input asp-for="Password" type="password" required />
+    </div>
+    <div>
+        <label asp-for="Role">Role:</label>
+        <select asp-for="Role" >
+            <option value="Admin">Admin</option>
+            <option value="Aluno">Aluno</option>
+            <option value="Funcionario">Funcionário</option>
+            <option value="Professor">Professor</option>
+        </select>
+    </div>
+    <button id="createUserButton" type="submit">Criar Utilizador</button>
+</form>

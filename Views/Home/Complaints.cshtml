@@ -1,0 +1,160 @@
+﻿@{
+    ViewData["Title"] = "Página de Reclamações";
+}
+<h1>@ViewData["Title"]</h1>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Reclamações</title>
+    <style>
+        /* Estilo do botão */
+        .open-modal-btn {
+          padding: 10px 20px;
+          background-color: #007bff;
+          color: white;
+          border: none;
+          cursor: pointer;
+          font-size: 16px;
+          border-radius: 5px;
+        }
+
+        /* Estilo do modal */
+        .modal {
+          display: none;
+          position: fixed;
+          z-index: 1;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Conteúdo do modal (mais largo agora) */
+        .modal-content {
+          background-color: white;
+          margin: 10% auto;
+          padding: 20px;
+          border-radius: 5px;
+          width: 600px; /* Aumentado para 600px */
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Estilo do botão de fechar */
+        .close-btn {
+          float: right;
+          color: #aaa;
+          font-size: 28px;
+          font-weight: bold;
+          cursor: pointer;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+          color: black;
+        }
+
+        /* Estilo do formulário */
+        form {
+          display: flex;
+          flex-direction: column;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        input[type="time"],
+        textarea {
+          padding: 10px;
+          margin: 10px 0;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          width: 100%;
+        }
+
+        /* Estilo checkbox */
+        .checkbox-container {
+          margin: 10px 0;
+          display: flex;
+          align-items: center;
+        }
+
+        button[type="submit"] {
+          padding: 10px;
+          background-color: #dc3545;
+          color: white;
+          border: none;
+          cursor: pointer;
+          border-radius: 4px;
+        }
+
+        button[type="submit"]:hover {
+          background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Botão para abrir o modal -->
+    <button class="open-modal-btn" id="openModalBtn">Fazer Reclamação</button>
+
+    <!-- Modal -->
+    <div class="modal" id="complaintModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModalBtn">&times;</span>
+            <h2>Formulário de Reclamações</h2>
+            <form>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Seu email" required>
+
+                <label for="date">Data:</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="time">Hora:</label>
+                <input type="time" id="time" name="time" required>
+
+                <label for="reason">Motivo da Reclamação:</label>
+                <input type="text" id="reason" name="reason" placeholder="Motivo da reclamação" required>
+
+                <label for="description">Descrição:</label>
+                <textarea id="description" name="description" rows="4" placeholder="Descreva sua reclamação" required></textarea>
+
+                <!-- Checkbox para tornar a reclamação privada -->
+                <div class="checkbox-container">
+                    <input type="checkbox" id="private" name="private">
+                    <label for="private">Desejo que minha reclamação seja privada</label>
+                </div>
+
+                <button type="submit">Enviar Reclamação</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Abrir modal
+        const modal = document.getElementById("complaintModal");
+        const openModalBtn = document.getElementById("openModalBtn");
+        const closeModalBtn = document.getElementById("closeModalBtn");
+
+        openModalBtn.onclick = function() {
+          modal.style.display = "block";
+        }
+
+        // Fechar modal
+        closeModalBtn.onclick = function() {
+          modal.style.display = "none";
+        }
+
+        // Fechar modal ao clicar fora da área de conteúdo
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+    </script>
+
+</body>
+</html>
+

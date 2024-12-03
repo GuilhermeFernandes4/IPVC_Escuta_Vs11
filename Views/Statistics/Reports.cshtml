@@ -1,0 +1,71 @@
+﻿@model dynamic
+
+@{
+    ViewData["Title"] = "Relatórios";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="container">
+    <!-- Exibindo as estatísticas básicas -->
+    <h3>Estatísticas Gerais</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Descrição</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Total de Usuários</td>
+                <td>@Model.TotalUsers</td>
+            </tr>
+            <tr>
+                <td>Usuários Ativos</td>
+                <td>@Model.ActiveUsers</td>
+            </tr>
+            <tr>
+                <td>Usuários Inativos</td>
+                <td>@Model.InactiveUsers</td>
+            </tr>
+            <tr>
+                <td>Novos Registros</td>
+                <td>@Model.NewRegistrations</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Exemplo de gráfico, usando um plugin de gráficos (opcional) -->
+    <h3>Gráficos</h3>
+    <div>
+        <canvas id="userChart" width="400" height="200"></canvas>
+    </div>
+</div>
+
+<!-- Incluir a biblioteca do Chart.js para gráficos (se necessário) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Gráfico de exemplo (Total de Usuários)
+    var ctx = document.getElementById('userChart').getContext('2d');
+    var userChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Usuários Ativos', 'Usuários Inativos'],
+            datasets: [{
+                label: 'Usuários',
+                data: [@Model.ActiveUsers, @Model.InactiveUsers], // Dados dinâmicos
+                backgroundColor: ['rgba(54, 162, 235, 0.2)', 'rgba(255, 99, 132, 0.2)'],
+                borderColor: ['rgba(54, 162, 235, 1)', 'rgba(255, 99, 132, 1)'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>

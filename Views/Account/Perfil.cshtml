@@ -1,0 +1,22 @@
+﻿@model IPVC_Escuta_Vs11.ViewModels.PerfilViewModel
+<link rel="stylesheet" href="~/css/site.css" />
+
+<div class="profile-container">
+    <div class="profile-header">
+        <h2>Perfil do Utilizador</h2>
+        <a href="@Url.Action("EditPerfil", "Account")" class="btn btn-primary">Editar Perfil</a>
+    </div>
+
+    <div class="profile-item">
+        <strong>Nome:</strong>
+        <p>@Model.Nome</p>
+    </div>
+    <div class="profile-item">
+        <strong>Email:</strong>
+        <p>@Model.Email</p>
+    </div>
+    <div class="profile-item">
+        <strong>Endereço:</strong>
+        <p>@Model.Address</p>
+    </div>
+</div>

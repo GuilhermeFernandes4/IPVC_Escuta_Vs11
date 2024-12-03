@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Professor Dashboard";
+}
+<link rel="stylesheet" href="~/css/site.css" />
+
+<h1-professor>Bem-vindo ao Painel do Professor</h1-professor>
+<p-professor>Aqui pode visualizar as suas turmas, planos de aula, e gerir outras tarefas relacionadas ao ensino.</p-professor>
+
+
+    <div class="container-professor">
+        <div class="card-container-professor">
+            <div class="card">
+                <h2>Dashboard</h2>
+                <p>Nesta página pode visualizar todos os tipos de comentários (Reclamações, Sugestões, Elogios).</p>
+                <a href="@Url.Action("Dashboard", "Home")">Aceder</a>
+            </div>
+            <div class="card">
+                <h2>Sugestões e Reclamação</h2>
+                <p>Aqui poderá partilhar as suas sugestões sobre a Escola.</p>
+                <a href="@Url.Action("CreateSugestaoReclamacaoP", "ReclamacoesSugestoes")">Aceder</a>
+            </div>
+
+            <div class="card">
+                <h2>Elogios</h2>
+                <p>Aqui poderá partilhar os seus elogios e avaliações sobre a Escola.</p>
+                <a href="@Url.Action("CreateElogioP", "Elogio")">Aceder</a>
+            </div>
+        </div>
+    </div>

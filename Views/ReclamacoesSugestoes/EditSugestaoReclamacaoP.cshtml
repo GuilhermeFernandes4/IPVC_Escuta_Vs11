@@ -1,0 +1,86 @@
+﻿@using IPVC_Escuta_Vs11.ViewModels
+@model CreateSugestaoReclamacaoViewModel
+
+@{
+    ViewBag.Title = "Editar";
+}
+
+<div class="container">
+    <h1>@ViewBag.Title</h1>
+
+    <form asp-action="EditSugestaoReclamacaoP" asp-controller="ReclamacoesSugestoes" method="post">
+        <!-- ID da Reclamação/Sugestão -->
+        <input type="hidden" asp-for="IDReclamacaoSugestao" />
+
+        <!-- Tipo de Formulário -->
+        <div class="form-group">
+            <label asp-for="TipoFormulario">Tipo de Formulário</label>
+            <select asp-for="TipoFormulario" class="form-control">
+                <option value="">Selecione o tipo de formulário</option>
+                <option value="Sugestao">Sugestão</option>
+                <option value="Reclamacao">Reclamação</option>
+            </select>
+            <span asp-validation-for="TipoFormulario" class="text-danger"></span>
+        </div>
+
+        <!-- Data -->
+        <div class="form-group">
+            <label asp-for="Data">Data</label>
+            <input asp-for="Data" class="form-control" type="date" />
+            <span asp-validation-for="Data" class="text-danger"></span>
+        </div>
+
+        <!-- Hora -->
+        <div class="form-group">
+            <label asp-for="Hora">Hora</label>
+            <input asp-for="Hora" class="form-control" type="time" />
+            <span asp-validation-for="Hora" class="text-danger"></span>
+        </div>
+
+        <!-- Motivo -->
+        <div class="form-group">
+            <label asp-for="Motivo">Motivo</label>
+            <input asp-for="Motivo" class="form-control" maxlength="200" />
+            <span asp-validation-for="Motivo" class="text-danger"></span>
+        </div>
+
+        <!-- Descrição -->
+        <div class="form-group">
+            <label asp-for="DescricaoRec">Descrição</label>
+            <textarea asp-for="DescricaoRec" class="form-control"></textarea>
+            <span asp-validation-for="DescricaoRec" class="text-danger"></span>
+        </div>
+
+        <!-- Categoria -->
+        <div class="form-group">
+            <label asp-for="Categoria">Categoria</label>
+            <select asp-for="Categoria" class="form-control">
+                <option value="">Selecione a categoria</option>
+                <option value="1">WC</option>
+                <option value="2">Cantina</option>
+                <option value="4">Direção</option>
+                <option value="5">Salas</option>
+            </select>
+            <span asp-validation-for="Categoria" class="text-danger"></span>
+        </div>
+
+        <!-- Escola -->
+        <div class="form-group">
+            <label asp-for="Escola">Escola</label>
+            <select asp-for="Escola" class="form-control">
+                <option value="">Selecione a escola</option>
+                <option value="1">Escola Superior de Educação</option>
+                <option value="2">Escola Superior de Tecnologia e Gestão</option>
+                <option value="3">Escola Superior Agrária</option>
+                <option value="4">Escola Superior de Ciências Empresariais</option>
+                <option value="5">Escola Superior de Desporto e Lazer</option>
+                <option value="6">Escola Superior de Saúde</option>
+            </select>
+            <span asp-validation-for="Escola" class="text-danger"></span>
+        </div>
+
+        <!-- Botões -->
+        <button type="submit" class="btn btn-primary">Atualizar</button>
+        <button type="reset" class="btn btn-secondary">Reset</button>
+    </form>
+</div>

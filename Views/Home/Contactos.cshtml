@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Contactos";
+}
+<link rel="stylesheet" href="~/css/site.css" />
+
+    <div class="container">
+        <div class="row">
+            <!-- Contêiner de Informações de Contato -->
+            <div class="col-md-6">
+                <section id="contacto">
+                    <h2>Contacto</h2>
+                    <p>Para mais informações sobre os cursos e atividades da ESTG, entre em contacto connosco:</p>
+                    <ul class="contact-info">
+                        <li>Email: <a href="mailto:estg@ipvc.pt" style="color: #004080;">estg@ipvc.pt</a></li>
+                        <li>Telefone: <a href="tel:+351258123456" style="color: #004080;">+351 258 123 456</a></li>
+                        <li>Morada: Rua Escola Superior de Tecnologia e Gestão, 4900-347 Viana do Castelo, Portugal</li>
+                    </ul>
+                </section>
+            </div>
+
+            <!-- Contêiner de Formulário de Contato -->
+            <div class="col-md-6">
+                <h2>Entre em Contato Conosco</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="nome">Nome:</label>
+                        <input type="text" class="form-control" id="nome" placeholder="Digite seu nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" placeholder="exemplo@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="localidade">Localidade:</label>
+                        <input type="text" class="form-control" id="localidade" placeholder="Sua localidade" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="assunto">Assunto:</label>
+                        <input type="text" class="form-control" id="assunto" placeholder="Assunto do contato" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone:</label>
+                        <input type="text" class="form-control" id="telefone" placeholder="(xx) xxxxx-xxxx" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3 btn-spacing">Enviar</button> <!-- Adicionando classe btn-spacing -->
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+

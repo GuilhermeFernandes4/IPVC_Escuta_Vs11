@@ -1,0 +1,1667 @@
+/* Estilos Globais */
+html {
+    font-size: 14px; /* Define o tamanho base da fonte como 14px */
+    position: relative; /* Garante que a posição da página seja relativa */
+    min-height: 100%; /* Faz com que o HTML ocupe a altura mínima de 100% da tela */
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px; /* Aumenta o tamanho da fonte para 16px em telas maiores */
+    }
+}
+
+body {
+    font-family: Arial, sans-serif; /* Define a fonte do corpo como Arial */
+    background-color: #f4f4f4; /* Cor de fundo suave para o corpo da página */
+    margin: 0; /* Remove a margem padrão */
+    padding: 0; /* Remove o padding padrão */
+    margin-bottom: 60px; /* Garante que o espaço inferior no body esteja presente */
+}
+
+/* Estilo para centralizar os elementos (h1 e p) */
+h1-aluno, p-aluno, h1-funcionario, p-funcionario, h1-professor, p-professor, h1-admin, p-admin {
+    display: block; /* Garante que o elemento ocupe toda a largura disponível */
+    text-align: center; /* Alinha o texto ao centro */
+    margin: 0 auto; /* Centraliza o elemento na tela */
+    width: fit-content; /* Ajusta o tamanho do elemento conforme o conteúdo */
+}
+
+/* Estilo para títulos gerais */
+h1, h2 {
+    color: #333; /* Cor escura para os títulos */
+    margin-bottom: 20px; /* Espaçamento inferior nos títulos */
+    font-size: 28px; /* Define o tamanho da fonte dos títulos */
+}
+
+/* Estilos de Botões e Foco */
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb; /* Adiciona um efeito de foco com borda azul */
+}
+
+/* Estilos de Perfil */
+.profile-container {
+    max-width: 600px; /* Limita a largura máxima para o perfil */
+    margin: 50px auto; /* Centraliza o container do perfil */
+    padding: 20px; /* Adiciona padding interno */
+    border-radius: 10px; /* Borda arredondada */
+    background-color: #f9f9f9; /* Cor de fundo clara para o perfil */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave ao redor do perfil */
+}
+
+.profile-header {
+    text-align: center; /* Centraliza o cabeçalho do perfil */
+    color: #333; /* Cor do texto */
+    margin-bottom: 20px; /* Espaçamento inferior */
+}
+
+.profile-item {
+    margin-bottom: 15px; /* Espaçamento inferior nos itens do perfil */
+}
+
+    .profile-item strong {
+        color: #555; /* Cor para os títulos de itens no perfil */
+        font-size: 16px; /* Tamanho da fonte */
+    }
+
+    .profile-item p {
+        color: #777; /* Cor para as descrições dos itens no perfil */
+        font-size: 16px; /* Tamanho da fonte */
+        margin: 0; /* Remove a margem */
+    }
+
+/* Estilos do Formulário de Login */
+.card {
+    background-color: #fff; /* Cor de fundo branca para o cartão de login */
+    border-radius: 8px; /* Borda arredondada */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 20px; /* Padding interno */
+    width: 100%; /* Garante que o cartão ocupe 100% da largura disponível */
+    max-width: 400px; /* Tamanho máximo ajustado para telas pequenas */
+    text-align: center; /* Alinha o conteúdo do cartão ao centro */
+    margin: 50px auto; /* Centraliza o cartão na tela */
+}
+
+    .card h2 {
+        font-size: 28px; /* Define o tamanho da fonte do título dentro do cartão */
+        color: #333; /* Cor do título */
+    }
+
+/* Estilos de Campos de Formulário */
+.form-control {
+    border-radius: 5px; /* Borda arredondada nos campos de formulário */
+    padding: 10px; /* Padding interno */
+    font-size: 16px; /* Tamanho da fonte */
+    width: 100%; /* Garante que o campo ocupe 100% da largura disponível */
+}
+
+.form-check-input {
+    margin-top: 6px; /* Espaçamento superior para os inputs de tipo checkbox */
+}
+
+.mb-3 {
+    margin-bottom: 15px; /* Margem inferior para separar os elementos */
+}
+
+/* Estilos de Texto */
+.text-danger {
+    font-size: 14px; /* Tamanho da fonte para mensagens de erro */
+}
+
+.text-decoration-none {
+    text-decoration: none; /* Remove a decoração de texto */
+   
+}
+
+    .text-decoration-none:hover {
+     
+    }
+
+/* Estilos de Float */
+.float-start {
+    float: left; /* Faz com que o elemento flutue à esquerda */
+}
+
+.float-end {
+    float: right; /* Faz com que o elemento flutue à direita */
+}
+
+/* Estilos de Links no Card */
+.card a {
+    display: inline-block; /* Exibe o link como um bloco inline */
+    margin-top: 10px; /* Margem superior */
+    text-decoration: none; /* Remove a decoração do texto */
+    color: white; /* Cor do texto do link */
+    background-color: #007BFF; /* Cor de fundo azul para o link */
+    border-radius: 5px; /* Borda arredondada */
+}
+
+    .card a:hover {
+        background-color: #0056b3; /* Cor de fundo mais escura no hover */
+    }
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .card {
+        width: 90%; /* Ajusta a largura do cartão para 90% em telas menores */
+    }
+
+    .profile-container {
+        max-width: 90%; /* Ajusta a largura do perfil para 90% em telas menores */
+    }
+}
+
+/* Containers para diferentes tipos de usuários */
+.container-aluno, .container-funcionario, .container-professor {
+    display: flex; /* Exibe os containers como flex containers */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    margin-top: 30px; /* Adiciona margem superior */
+}
+
+/* Containers de Cartões */
+.card-container-aluno, .card-container-funcionario, .card-container-professor {
+    display: grid; /* Usa grid para os itens */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Cria colunas flexíveis */
+    gap: 20px; /* Espaço entre os cartões */
+    width: 80%; /* Define a largura do container como 80% */
+    max-width: 1200px; /* Define a largura máxima */
+}
+
+/* Estilo do rodapé */
+footer {
+    background-color: #f4f4f4; /* Cor de fundo suave para o rodapé */
+    text-align: center; /* Centraliza o texto dentro do rodapé */
+    width: 100%; /* Garante que o rodapé ocupe toda a largura da página */
+    padding: 20px; /* Espaçamento interno no rodapé */
+    position: relative;
+    bottom: 0;
+}
+
+/* Containers gerais */
+.container {
+    margin-top: 20px; /* Adiciona margem superior para containers */
+}
+
+/* Informações de contato */
+.contact-info {
+    list-style-type: none; /* Remove o estilo padrão de lista */
+    padding: 0; /* Remove o padding da lista */
+    font-size: 0.9em; /* Tamanho do texto reduzido */
+    line-height: 1.5; /* Linha mais compacta */
+}
+
+    .contact-info li {
+        margin-bottom: 5px; /* Espaço entre os itens da lista */
+    }
+
+/* Estilos para modal no painel de administração */
+.custom-modal-width-admin {
+    max-width: 100%; /* Ajusta a largura máxima da modal */
+}
+
+/* Estilo do card no painel de admin */
+.card-admin {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra no card de admin */
+    transition: 0.3s; /* Transição suave para transformações */
+    border-radius: 8px; /* Borda arredondada */
+
+}
+
+    .card-admin:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Efeito de hover com sombra maior */
+        transform: scale(1.05); /* Efeito de aumento no hover */
+    }
+
+/* Estilo para reduzir o tamanho das imagens do carrossel */
+.carousel-inner img {
+    width: 75%; /* Reduz a largura da imagem para 75% do contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+    max-height: 400px; /* Limita a altura máxima para 400px */
+    margin: 0 auto; /* Centraliza a imagem dentro do carrossel */
+}
+
+/* Estilos de navegação */
+nav {
+    margin: 10px 0; /* Adiciona margem superior e inferior */
+    text-align: center; /* Centraliza os links de navegação */
+}
+
+    nav a {
+        margin: 0 15px; /* Adiciona margens laterais aos links */
+        text-decoration: none; /* Remove a decoração do texto */
+        color: #004080; /* Cor do texto azul */
+        font-weight: normal; /* Define peso de fonte normal */
+        font-size: 0.9em; /* Tamanho do texto para os links */
+    }
+
+
+/* Estilo para o cabeçalho */
+.header-sobre {
+    background-color: #003366;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+}
+
+    .header-sobre h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+
+    .header-sobre p {
+        font-size: 1.2rem;
+        margin: 0;
+    }
+
+/* Menu de navegação */
+.nav-sobre {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #003366;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+    .nav-sobre a {
+        color: #003366;
+        margin: 0 15px;
+        font-weight: bold;
+        text-decoration: none;
+        font-family: 'Arial', sans-serif;
+    }
+
+        .nav-sobre a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+/* Estilo geral do container */
+.container {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Estilo da seção Sobre */
+#sobre {
+    margin-bottom: 40px;
+}
+
+    #sobre h2 {
+        color: #003366;
+        font-size: 1.8rem;
+        border-bottom: 3px solid #003366;
+        padding-bottom: 5px;
+        margin-bottom: 20px;
+    }
+
+    #sobre p {
+        text-align: justify;
+        margin-bottom: 15px;
+    }
+
+/* Estilo da seção Cursos */
+#cursos h2 {
+    color: #003366;
+    font-size: 1.8rem;
+    border-bottom: 3px solid #003366;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+.card-sobre {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .card-sobre:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-sobre h3 {
+        color: #003366;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .card-sobre p {
+        font-size: 1rem;
+        color: #555;
+    }
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .header-sobre h1 {
+        font-size: 2rem;
+    }
+
+    .header-sobre p {
+        font-size: 1rem;
+    }
+
+    .nav-sobre a {
+        margin: 0 10px;
+        font-size: 0.9rem;
+    }
+
+    #sobre h2, #cursos h2 {
+        font-size: 1.5rem;
+    }
+
+    .card-sobre h3 {
+        font-size: 1.2rem;
+    }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+    .header h1 {
+        font-size: 36px;
+        font-weight: bold;
+    }
+
+    .header p {
+        font-size: 18px;
+    }
+
+.list-group-item {
+    background-color: #ffffff;
+    border: none;
+    font-size: 16px;
+}
+
+    .list-group-item:hover {
+        background-color: #f1f1f1;
+    }
+
+.scrollspy-example {
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+    .scrollspy-example h4 {
+        color: #007bff;
+        margin-top: 30px;
+    }
+
+    .scrollspy-example p,
+    .scrollspy-example ul {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .scrollspy-example ul {
+        padding-left: 20px;
+    }
+
+/* Estilo geral para o corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa; /* Cor de fundo suave */
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo para o container principal da Página Inicial */
+.PagInicial {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilo para o Carrossel */
+#carouselExampleIndicators {
+    margin-bottom: 30px; /* Espaçamento abaixo do carrossel */
+}
+
+.PagInicial .carousel-item img {
+    object-fit: cover;
+    height: 500px; /* Tamanho fixo para as imagens do carrossel */
+    border-radius: 10px;
+}
+
+/* Estilo para os controles do carrossel */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #007BFF; /* Cor azul para os ícones de navegação */
+    border-radius: 50%;
+}
+
+/* Estilo para a seção de boas-vindas */
+.PagInicial .custom-font-welcome {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color: #333;
+}
+
+.PagInicial .custom-font-text {
+    font-family: 'Open Sans', sans-serif;
+    color: #555;
+}
+
+/* Estilo para a seção de serviços */
+.PagInicial .container.text-center {
+    margin-top: 50px;
+}
+
+.PagInicial h2 {
+    font-size: 2rem;
+    color: #007BFF; /* Cor azul para o título de serviços */
+    font-weight: bold;
+}
+
+/* Estilo para os cards de serviço */
+.PagInicial .card-index {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    margin-bottom: 20px;
+    height: 100%;
+}
+
+    .PagInicial .card-index:hover {
+        transform: translateY(-10px); /* Levanta o card ao passar o mouse */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Aumenta a sombra */
+    }
+
+    .PagInicial .card-index img {
+        height: 200px;
+        object-fit: cover;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+.PagInicial .card-body {
+    padding: 20px;
+}
+
+.PagInicial .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.PagInicial .card-text {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* Estilo para a responsividade */
+@media (max-width: 768px) {
+    /* Ajuste do carrossel e dos cards em dispositivos móveis */
+    .PagInicial .carousel-item img {
+        height: 300px; /* Ajusta o tamanho da imagem do carrossel em dispositivos móveis */
+    }
+
+    .PagInicial .card-index {
+        width: 100%;
+    }
+
+    .PagInicial .container-fluid {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+@media (max-width: 992px) {
+    .PagInicial .container-fluid {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+
+/* Estilo geral para o corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Cor de fundo suave */
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Estilo para o container principal da página Sobre Projeto */
+.SobreProjeto {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilo para o cabeçalho */
+.SobreProjeto .header {
+    background-color: #007BFF;
+    color: white;
+    padding: 20px; /* Diminuído para reduzir a altura do cabeçalho */
+    text-align: center;
+    border-radius: 10px;
+}
+
+.SobreProjeto .header h1 {
+    font-size: 1.8rem; /* Reduzido o tamanho da fonte do título */
+    font-weight: bold;
+}
+
+.SobreProjeto .header p {
+    font-size: 1rem; /* Reduzido o tamanho da fonte do parágrafo */
+}
+
+/* Estilo para a navegação */
+.SobreProjeto .list-group {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.SobreProjeto .list-group-item {
+    border: none;
+    background-color: transparent;
+    color: #333;
+    font-size: 1.1rem;
+    padding: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.SobreProjeto .list-group-item:hover {
+    background-color: #007BFF;
+    color: white;
+}
+
+.SobreProjeto .list-group-item.active {
+    background-color: #007BFF;
+    color: white;
+}
+
+/* Estilo para o conteúdo principal */
+.SobreProjeto .scrollspy-example h4 {
+    color: #333;
+    font-size: 1.75rem;
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+.SobreProjeto .scrollspy-example p {
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.SobreProjeto .scrollspy-example ul {
+    color: #555;
+    font-size: 1.1rem;
+    list-style: none;
+    padding-left: 0;
+}
+
+.SobreProjeto .scrollspy-example ul li {
+    margin-bottom: 10px;
+}
+
+/* Estilo para os efeitos de sobreposição (overlay) */
+.SobreProjeto .list-group-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 123, 255, 0.2); /* Cor de sobreposição */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 10px;
+}
+
+.SobreProjeto .list-group-item:hover::after {
+    opacity: 1; /* Aparece ao passar o mouse */
+}
+
+.SobreProjeto .container-fluid {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+/* Estilo para a responsividade */
+@media (max-width: 768px) {
+    .SobreProjeto .container-fluid {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .SobreProjeto .header h1 {
+        font-size: 1.6rem;
+    }
+
+    .SobreProjeto .header p {
+        font-size: 0.9rem;
+    }
+
+    .SobreProjeto .scrollspy-example h4 {
+        font-size: 1.5rem;
+    }
+
+    .SobreProjeto .scrollspy-example p,
+    .SobreProjeto .scrollspy-example ul li {
+        font-size: 1rem;
+    }
+}
+
+.scrollable-container {
+    max-height: 500px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #f5f5f5;
+    margin-bottom: 20px;
+}
+
+.reclamacao-container, .elogio-container {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #fff;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+    .reclamacao-container div, .elogio-container div {
+        margin-bottom: 8px;
+    }
+
+    .reclamacao-container strong, .elogio-container strong {
+        color: #333;
+    }
+
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+    .profile-header h2 {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .profile-header .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+        text-decoration: none;
+        color: white;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+        .profile-header .btn:hover {
+            background-color: #0056b3;
+        }
+
+.profile-item {
+    margin-bottom: 15px;
+}
+
+    .profile-item strong {
+        font-size: 1.1rem;
+        color: #555;
+    }
+
+    .profile-item p {
+        font-size: 1rem;
+        color: #333;
+    }
+
+.profile-form .form-group {
+    margin-bottom: 15px;
+}
+
+.profile-form label {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.profile-form input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.profile-form button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+    .profile-form button:hover {
+        background-color: #218838;
+    }
+
+.profile-form .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+    .profile-form .btn-secondary:hover {
+        background-color: #5a6268;
+    }
+
+
+/* Estilo geral do contêiner específico */
+.containerCreateElogioP {
+    max-width: 500px; /* Reduz a largura */
+    margin: 0 auto;
+    padding: 15px; /* Reduz o espaçamento interno */
+    background-color: #f4f8fc; /* Azul claro */
+    border-radius: 8px; /* Bordas levemente arredondadas */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+    /* Título */
+    .containerCreateElogioP h1 {
+        text-align: center;
+        font-size: 22px; /* Reduz o tamanho do título */
+        color: #2c3e50; /* Azul escuro */
+        margin-bottom: 15px; /* Menor espaçamento */
+    }
+
+    /* Estilo das labels */
+    .containerCreateElogioP .form-group label {
+        font-weight: bold;
+        color: #34495e; /* Cinza escuro */
+        display: block;
+        margin-bottom: 5px; /* Menor espaçamento */
+        font-size: 14px; /* Reduz o tamanho da fonte */
+    }
+
+    /* Campos de entrada */
+    .containerCreateElogioP .form-control {
+        width: 100%;
+        padding: 8px; /* Reduz o padding */
+        font-size: 14px; /* Fonte menor */
+        color: #2c3e50;
+        border: 1px solid #ced6e0;
+        border-radius: 4px;
+        box-sizing: border-box;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .containerCreateElogioP .form-control:focus {
+            border-color: #1e90ff;
+            outline: none;
+            box-shadow: 0 0 4px rgba(30, 144, 255, 0.3); /* Sombra menor */
+        }
+
+    /* Botões */
+    .containerCreateElogioP button[type="submit"],
+    .containerCreateElogioP button[type="reset"] {
+        padding: 8px 15px; /* Botões mais compactos */
+        font-size: 13px; /* Reduz tamanho da fonte */
+        font-weight: bold;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .containerCreateElogioP button[type="submit"] {
+        background-color: #3498db; /* Azul */
+    }
+
+        .containerCreateElogioP button[type="submit"]:hover {
+            background-color: #2980b9; /* Azul mais escuro */
+        }
+
+    .containerCreateElogioP button[type="reset"] {
+        background-color: #95a5a6; /* Cinza */
+    }
+
+        .containerCreateElogioP button[type="reset"]:hover {
+            background-color: #7f8c8d; /* Cinza mais escuro */
+        }
+
+    /* Mensagens de erro */
+    .containerCreateElogioP .text-danger {
+        color: #e74c3c; /* Vermelho */
+        font-size: 12px; /* Fonte menor */
+        margin-top: 3px; /* Espaçamento menor */
+        display: block;
+    }
+
+    /* Espaçamento entre os campos */
+    .containerCreateElogioP .form-group {
+        margin-bottom: 12px; /* Menor espaçamento entre grupos */
+    }
+
+    /* Estilo para o botão "Criar" durante o clique */
+    .containerCreateElogioP button[disabled] {
+        background-color: #95a5a6;
+        cursor: not-allowed;
+        opacity: 0.7;
+    }
+
+
+/* Estilo geral do contêiner específico */
+.containerCreateElogioF {
+    max-width: 500px; /* Reduz a largura */
+    margin: 0 auto;
+    padding: 15px; /* Reduz o espaçamento interno */
+    background-color: #f4f8fc; /* Azul claro */
+    border-radius: 8px; /* Bordas levemente arredondadas */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+    /* Título */
+    .containerCreateElogioF h1 {
+        text-align: center;
+        font-size: 22px; /* Reduz o tamanho do título */
+        color: #2c3e50; /* Azul escuro */
+        margin-bottom: 15px; /* Menor espaçamento */
+    }
+
+    /* Estilo das labels */
+    .containerCreateElogioF .form-group label {
+        font-weight: bold;
+        color: #34495e; /* Cinza escuro */
+        display: block;
+        margin-bottom: 5px; /* Menor espaçamento */
+        font-size: 14px; /* Reduz o tamanho da fonte */
+    }
+
+    /* Campos de entrada */
+    .containerCreateElogioF .form-control {
+        width: 100%;
+        padding: 8px; /* Reduz o padding */
+        font-size: 14px; /* Fonte menor */
+        color: #2c3e50;
+        border: 1px solid #ced6e0;
+        border-radius: 4px;
+        box-sizing: border-box;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .containerCreateElogioF .form-control:focus {
+            border-color: #1e90ff;
+            outline: none;
+            box-shadow: 0 0 4px rgba(30, 144, 255, 0.3); /* Sombra menor */
+        }
+
+    /* Botões */
+    .containerCreateElogioF button[type="submit"],
+    .containerCreateElogioF button[type="reset"] {
+        padding: 8px 15px; /* Botões mais compactos */
+        font-size: 13px; /* Reduz tamanho da fonte */
+        font-weight: bold;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .containerCreateElogioF button[type="submit"] {
+        background-color: #3498db; /* Azul */
+    }
+
+        .containerCreateElogioF button[type="submit"]:hover {
+            background-color: #2980b9; /* Azul mais escuro */
+        }
+
+    .containerCreateElogioF button[type="reset"] {
+        background-color: #95a5a6; /* Cinza */
+    }
+
+        .containerCreateElogioF button[type="reset"]:hover {
+            background-color: #7f8c8d; /* Cinza mais escuro */
+        }
+
+    /* Mensagens de erro */
+    .containerCreateElogioF .text-danger {
+        color: #e74c3c; /* Vermelho */
+        font-size: 12px; /* Fonte menor */
+        margin-top: 3px; /* Espaçamento menor */
+        display: block;
+    }
+
+    /* Espaçamento entre os campos */
+    .containerCreateElogioF .form-group {
+        margin-bottom: 12px; /* Menor espaçamento entre grupos */
+    }
+
+    /* Estilo para o botão "Criar" durante o clique */
+    .containerCreateElogioF button[disabled] {
+        background-color: #95a5a6;
+        cursor: not-allowed;
+        opacity: 0.7;
+    }
+
+/* Estilo geral do contêiner específico */
+.containerCreateElogioP {
+    max-width: 500px; /* Reduz a largura */
+    margin: 0 auto;
+    padding: 15px; /* Reduz o espaçamento interno */
+    background-color: #f4f8fc; /* Azul claro */
+    border-radius: 8px; /* Bordas levemente arredondadas */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+    /* Título */
+    .containerCreateElogioP h1 {
+        text-align: center;
+        font-size: 22px; /* Reduz o tamanho do título */
+        color: #2c3e50; /* Azul escuro */
+        margin-bottom: 15px; /* Menor espaçamento */
+    }
+
+    /* Estilo das labels */
+    .containerCreateElogioP .form-group label {
+        font-weight: bold;
+        color: #34495e; /* Cinza escuro */
+        display: block;
+        margin-bottom: 5px; /* Menor espaçamento */
+        font-size: 14px; /* Reduz o tamanho da fonte */
+    }
+
+    /* Campos de entrada */
+    .containerCreateElogioP .form-control {
+        width: 100%;
+        padding: 8px; /* Reduz o padding */
+        font-size: 14px; /* Fonte menor */
+        color: #2c3e50;
+        border: 1px solid #ced6e0;
+        border-radius: 4px;
+        box-sizing: border-box;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .containerCreateElogioP .form-control:focus {
+            border-color: #1e90ff;
+            outline: none;
+            box-shadow: 0 0 4px rgba(30, 144, 255, 0.3); /* Sombra menor */
+        }
+
+    /* Botões */
+    .containerCreateElogioP button[type="submit"],
+    .containerCreateElogioP button[type="reset"] {
+        padding: 8px 15px; /* Botões mais compactos */
+        font-size: 13px; /* Reduz tamanho da fonte */
+        font-weight: bold;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .containerCreateElogioP button[type="submit"] {
+        background-color: #3498db; /* Azul */
+    }
+
+        .containerCreateElogioP button[type="submit"]:hover {
+            background-color: #2980b9; /* Azul mais escuro */
+        }
+
+    .containerCreateElogioP button[type="reset"] {
+        background-color: #95a5a6; /* Cinza */
+    }
+
+        .containerCreateElogioP button[type="reset"]:hover {
+            background-color: #7f8c8d; /* Cinza mais escuro */
+        }
+
+    /* Mensagens de erro */
+    .containerCreateElogioP .text-danger {
+        color: #e74c3c; /* Vermelho */
+        font-size: 12px; /* Fonte menor */
+        margin-top: 3px; /* Espaçamento menor */
+        display: block;
+    }
+
+    /* Espaçamento entre os campos */
+    .containerCreateElogioP .form-group {
+        margin-bottom: 12px; /* Menor espaçamento entre grupos */
+    }
+
+    /* Estilo para o botão "Criar" durante o clique */
+    .containerCreateElogioP button[disabled] {
+        background-color: #95a5a6;
+        cursor: not-allowed;
+        opacity: 0.7;
+    }
+
+/* Estilo geral do contêiner específico */
+.containerCreateElogio {
+    max-width: 500px; /* Reduz a largura */
+    margin: 0 auto;
+    padding: 15px; /* Reduz o espaçamento interno */
+    background-color: #f4f8fc; /* Azul claro */
+    border-radius: 8px; /* Bordas levemente arredondadas */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+    /* Título */
+    .containerCreateElogio h1 {
+        text-align: center;
+        font-size: 22px; /* Reduz o tamanho do título */
+        color: #2c3e50; /* Azul escuro */
+        margin-bottom: 15px; /* Menor espaçamento */
+    }
+
+    /* Estilo das labels */
+    .containerCreateElogio .form-group label {
+        font-weight: bold;
+        color: #34495e; /* Cinza escuro */
+        display: block;
+        margin-bottom: 5px; /* Menor espaçamento */
+        font-size: 14px; /* Reduz o tamanho da fonte */
+    }
+
+    /* Campos de entrada */
+    .containerCreateElogio .form-control {
+        width: 100%;
+        padding: 8px; /* Reduz o padding */
+        font-size: 14px; /* Fonte menor */
+        color: #2c3e50;
+        border: 1px solid #ced6e0;
+        border-radius: 4px;
+        box-sizing: border-box;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .containerCreateElogio .form-control:focus {
+            border-color: #1e90ff;
+            outline: none;
+            box-shadow: 0 0 4px rgba(30, 144, 255, 0.3); /* Sombra menor */
+        }
+
+    /* Botões */
+    .containerCreateElogio button[type="submit"],
+    .containerCreateElogio button[type="reset"] {
+        padding: 8px 15px; /* Botões mais compactos */
+        font-size: 13px; /* Reduz tamanho da fonte */
+        font-weight: bold;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .containerCreateElogio button[type="submit"] {
+        background-color: #3498db; /* Azul */
+    }
+
+        .containerCreateElogio button[type="submit"]:hover {
+            background-color: #2980b9; /* Azul mais escuro */
+        }
+
+    .containerCreateElogio button[type="reset"] {
+        background-color: #95a5a6; /* Cinza */
+    }
+
+        .containerCreateElogio button[type="reset"]:hover {
+            background-color: #7f8c8d; /* Cinza mais escuro */
+        }
+
+    /* Mensagens de erro */
+    .containerCreateElogio .text-danger {
+        color: #e74c3c; /* Vermelho */
+        font-size: 12px; /* Fonte menor */
+        margin-top: 3px; /* Espaçamento menor */
+        display: block;
+    }
+
+    /* Espaçamento entre os campos */
+    .containerCreateElogio .form-group {
+        margin-bottom: 12px; /* Menor espaçamento entre grupos */
+    }
+
+    /* Estilo para o botão "Criar" durante o clique */
+    .containerCreateElogio button[disabled] {
+        background-color: #95a5a6;
+        cursor: not-allowed;
+        opacity: 0.7;
+    }
+
+
+
+/* Estilo geral do contêiner específico */
+.containerCreateSugestaoReclamacao {
+    max-width: 800px; /* Aumenta a largura do container para 800px */
+    margin: 0 auto;
+    padding: 15px; /* Reduz o padding do container */
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 80px; /* Aumenta a margem inferior para criar mais espaço entre o conteúdo e o rodapé */
+}
+
+    /* Título */
+    .containerCreateSugestaoReclamacao h1 {
+        text-align: center;
+        font-size: 24px;
+        color: #2c3e50;
+        margin-bottom: 20px;
+    }
+
+    /* Estilo das labels */
+    .containerCreateSugestaoReclamacao .form-group label {
+        font-weight: bold;
+        color: #34495e;
+        display: block;
+        margin-bottom: 6px;
+        font-size: 14px;
+    }
+
+    /* Campos de entrada */
+    .containerCreateSugestaoReclamacao .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: 13px;
+        color: #2c3e50;
+        border: 1px solid #ced6e0;
+        border-radius: 6px;
+        box-sizing: border-box;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .containerCreateSugestaoReclamacao .form-control:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 4px rgba(30, 144, 255, 0.3);
+        }
+
+    /* Flexbox para alinhar Data e Hora lado a lado */
+    .containerCreateSugestaoReclamacao .form-group.date-time {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-start;
+    }
+
+        .containerCreateSugestaoReclamacao .form-group.date-time .form-control {
+            flex: 1 1 48%;
+        }
+
+    /* Flexbox para alinhar Categoria, Escola e Botões lado a lado */
+    .containerCreateSugestaoReclamacao .form-group.category-school-buttons {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+        /* Flexbox para os campos Categoria e Escola lado a lado */
+        .containerCreateSugestaoReclamacao .form-group.category-school-buttons .form-control {
+            flex: 1 1 48%;
+            padding: 10px;
+        }
+
+    /* Botões */
+    .containerCreateSugestaoReclamacao button[type="submit"],
+    .containerCreateSugestaoReclamacao button[type="reset"] {
+        padding: 10px 18px;
+        font-size: 13px;
+        font-weight: bold;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-top: 22px;
+    }
+
+    .containerCreateSugestaoReclamacao button[type="submit"] {
+        background-color: #3498db;
+    }
+
+        .containerCreateSugestaoReclamacao button[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+
+    .containerCreateSugestaoReclamacao button[type="reset"] {
+        background-color: #95a5a6;
+    }
+
+        .containerCreateSugestaoReclamacao button[type="reset"]:hover {
+            background-color: #7f8c8d;
+        }
+
+    /* Mensagens de erro */
+    .containerCreateSugestaoReclamacao .text-danger {
+        color: #e74c3c;
+        font-size: 12px;
+        margin-top: 5px;
+        display: block;
+    }
+
+    /* Espaçamento entre os campos */
+    .containerCreateSugestaoReclamacao .form-group {
+        margin-bottom: 16px;
+    }
+
+    /* Formatação de campo de texto */
+    .containerCreateSugestaoReclamacao textarea.form-control {
+        min-height: 130px;
+        resize: vertical;
+    }
+
+/* Estilo geral do contêiner específico */
+.containerCreateSugestaoReclamacaoF {
+    max-width: 900px; /* Aumenta a largura do container */
+    margin: 0 auto;
+    padding: 20px; /* Aumenta o padding */
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 100px; /* Aumenta a margem inferior */
+}
+
+    /* Título */
+    .containerCreateSugestaoReclamacaoF h1 {
+        text-align: center;
+        font-size: 26px;
+        color: #2c3e50;
+        margin-bottom: 20px;
+    }
+
+    /* Estilo das labels */
+    .containerCreateSugestaoReclamacaoF .form-group label {
+        font-weight: bold;
+        color: #34495e;
+        display: block;
+        margin-bottom: 6px;
+        font-size: 14px;
+    }
+
+    /* Campos de entrada */
+    .containerCreateSugestaoReclamacaoF .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        color: #2c3e50;
+        border: 1px solid #ced6e0;
+        border-radius: 6px;
+        box-sizing: border-box;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .containerCreateSugestaoReclamacaoF .form-control:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 4px rgba(30, 144, 255, 0.3);
+        }
+
+    /* Flexbox para alinhar Data e Hora lado a lado */
+    .containerCreateSugestaoReclamacaoF .form-group.date-time {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-start;
+    }
+
+        .containerCreateSugestaoReclamacaoF .form-group.date-time .form-control-container {
+            flex: 1 1 48%;
+        }
+
+    /* Flexbox para alinhar Categoria e Escola lado a lado */
+    .containerCreateSugestaoReclamacaoF .form-group.category-school-buttons {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+        .containerCreateSugestaoReclamacaoF .form-group.category-school-buttons .form-control-container {
+            flex: 1 1 48%;
+        }
+
+    /* Botões */
+    .containerCreateSugestaoReclamacaoF button[type="submit"],
+    .containerCreateSugestaoReclamacaoF button[type="reset"] {
+        padding: 10px 18px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-top: 15px;
+    }
+
+    .containerCreateSugestaoReclamacaoF button[type="submit"] {
+        background-color: #3498db;
+    }
+
+        .containerCreateSugestaoReclamacaoF button[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+
+    .containerCreateSugestaoReclamacaoF button[type="reset"] {
+        background-color: #95a5a6;
+    }
+
+        .containerCreateSugestaoReclamacaoF button[type="reset"]:hover {
+            background-color: #7f8c8d;
+        }
+
+    /* Mensagens de erro */
+    .containerCreateSugestaoReclamacaoF .text-danger {
+        color: #e74c3c;
+        font-size: 12px;
+        margin-top: 5px;
+        display: block;
+    }
+
+    /* Espaçamento entre os campos */
+    .containerCreateSugestaoReclamacaoF .form-group {
+        margin-bottom: 16px;
+    }
+
+    /* Formatação de campo de texto */
+    .containerCreateSugestaoReclamacaoF textarea.form-control {
+        min-height: 130px;
+        resize: vertical;
+    }
+
+/* Estilo geral do contêiner específico */
+.containerCreateSugestaoReclamacaoP {
+    max-width: 900px; /* Aumenta a largura do container */
+    margin: 0 auto;
+    padding: 20px; /* Aumenta o padding */
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 100px; /* Aumenta a margem inferior */
+}
+
+    /* Título */
+    .containerCreateSugestaoReclamacaoP h1 {
+        text-align: center;
+        font-size: 26px;
+        color: #2c3e50;
+        margin-bottom: 20px;
+    }
+
+    /* Estilo das labels */
+    .containerCreateSugestaoReclamacaoP .form-group label {
+        font-weight: bold;
+        color: #34495e;
+        display: block;
+        margin-bottom: 6px;
+        font-size: 14px;
+    }
+
+    /* Campos de entrada */
+    .containerCreateSugestaoReclamacaoP .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        color: #2c3e50;
+        border: 1px solid #ced6e0;
+        border-radius: 6px;
+        box-sizing: border-box;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .containerCreateSugestaoReclamacaoP .form-control:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 4px rgba(30, 144, 255, 0.3);
+        }
+
+    /* Flexbox para alinhar Data e Hora lado a lado */
+    .containerCreateSugestaoReclamacaoP .form-group.date-time {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-start;
+    }
+
+        .containerCreateSugestaoReclamacaoP .form-group.date-time .form-control-container {
+            flex: 1 1 48%;
+        }
+
+    /* Flexbox para alinhar Categoria e Escola lado a lado */
+    .containerCreateSugestaoReclamacaoP .form-group.category-school-buttons {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+        .containerCreateSugestaoReclamacaoP .form-group.category-school-buttons .form-control-container {
+            flex: 1 1 48%;
+        }
+
+    /* Botões */
+    .containerCreateSugestaoReclamacaoP button[type="submit"],
+    .containerCreateSugestaoReclamacaoP button[type="reset"] {
+        padding: 10px 18px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-top: 15px;
+    }
+
+    .containerCreateSugestaoReclamacaoP button[type="submit"] {
+        background-color: #3498db;
+    }
+
+        .containerCreateSugestaoReclamacaoP button[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+
+    .containerCreateSugestaoReclamacaoP button[type="reset"] {
+        background-color: #95a5a6;
+    }
+
+        .containerCreateSugestaoReclamacaoP button[type="reset"]:hover {
+            background-color: #7f8c8d;
+        }
+
+    /* Mensagens de erro */
+    .containerCreateSugestaoReclamacaoP .text-danger {
+        color: #e74c3c;
+        font-size: 12px;
+        margin-top: 5px;
+        display: block;
+    }
+
+    /* Espaçamento entre os campos */
+    .containerCreateSugestaoReclamacaoP .form-group {
+        margin-bottom: 16px;
+    }
+
+    /* Formatação de campo de texto */
+    .containerCreateSugestaoReclamacaoP textarea.form-control {
+        min-height: 130px;
+        resize: vertical;
+    }
+
+
+/*Para garantir que todos os elemnetos dentro do row tem a mesma altura (+ definir heigth:100% nos elementos)*/
+                                                                                                           /**/
+.row-equal {                                                                                               /**/
+    display: flex;                                                                                         /**/
+    align-items: stretch; /* Ensures all columns are the same height */                                    /**/
+}                                                                                                          /**/
+/*************************************************************************************************************/
+
+.card-sobre {
+    height: 100%; /* Make the card fill the column's height */
+}
+
+.row-spacing {
+    margin-bottom: 1rem; /* Adjust spacing between rows */
+}
+
+.mt-10 {
+    margin-top: 96px;
+}
+
+
+.mb-10 {
+    margin-bottom: 96px;
+}
+
+.stars {
+    display: flex;
+    gap: 5px;
+}
+
+.star {
+    font-size: 30px;
+    cursor: pointer;
+    color: #ddd; /* Cor padrão */
+}
+
+    .star:hover {
+        color: #FFD700; /* Cor ao passar o mouse */
+    }
+
+
+
+<style >
+/* Resetando estilo padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f9;
+    color: #333;
+    font-size: 16px;
+}
+
+/* Cabeçalho */
+header {
+    
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 28px;
+}
+
+/* Layout */
+#layout-dashboard {
+    display: flex;
+    margin: 20px;
+}
+
+/* Menu Lateral */
+#menu-lateral {
+    width: 200px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+}
+
+.menu-btn {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+    .menu-btn:hover {
+        background-color: #45a049;
+    }
+
+/* Conteúdo Principal */
+#conteudo-principal {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.content-section {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.content-card {
+    margin-bottom: 10px;
+}
+
+h2, h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+/* Botão Voltar */
+.btn-toggle {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+    .btn-toggle:hover {
+        background-color: #0056b3;
+    }
+
+</style >

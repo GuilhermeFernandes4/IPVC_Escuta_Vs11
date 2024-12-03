@@ -1,0 +1,49 @@
+﻿@model dynamic
+
+@{
+    ViewData["Title"] = "Análise de Progresso - (Reclamações/Sugestões/Elogios)";
+
+    // Calculando a porcentagem de cada tipo de feedback
+    double percentReclamacoes = Model.TotalFeedbacks > 0 ? (Model.TotalReclamacoes * 100.0 / Model.TotalFeedbacks) : 0;
+    double percentSugestoes = Model.TotalFeedbacks > 0 ? (Model.TotalSugestoes * 100.0 / Model.TotalFeedbacks) : 0;
+    double percentElogios = Model.TotalFeedbacks > 0 ? (Model.TotalElogios * 100.0 / Model.TotalFeedbacks) : 0;
+}
+
+<h2>Análise de Progresso - (Reclamações/Sugestões/Elogios)</h2>
+
+<!-- Legenda para as barras de progresso -->
+<div class="mt-3">
+    <small><span class="badge bg-danger"></span> Reclamações | <span class="badge bg-warning text-dark"></span> Sugestões | <span class="badge bg-success"></span> Elogios</small>
+</div>
+
+<!-- Barra de progresso de Reclamações -->
+<div class="progress mt-3" role="progressbar" aria-label="Reclamações" aria-valuenow="@percentReclamacoes" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar bg-danger" style="width: @percentReclamacoes%" title="@percentReclamacoes.ToString("0.##")% de Reclamações">
+        @percentReclamacoes.ToString("0.##")% Reclamações
+    </div>
+</div>
+<!-- Total de Reclamações -->
+<p>@Model.TotalReclamacoes Feedbacks de Reclamações</p>
+
+<!-- Barra de progresso de Sugestões -->
+<div class="progress mt-3" role="progressbar" aria-label="Sugestões" aria-valuenow="@percentSugestoes" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar bg-warning text-dark" style="width: @percentSugestoes%" title="@percentSugestoes.ToString("0.##")% de Sugestões">
+        @percentSugestoes.ToString("0.##")% Sugestões
+    </div>
+</div>
+<!-- Total de Sugestões -->
+<p>@Model.TotalSugestoes Feedbacks de Sugestões</p>
+
+<!-- Barra de progresso de Elogios -->
+<div class="progress mt-3" role="progressbar" aria-label="Elogios" aria-valuenow="@percentElogios" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar bg-success" style="width: @percentElogios%" title="@percentElogios.ToString("0.##")% de Elogios">
+        @percentElogios.ToString("0.##")% Elogios
+    </div>
+</div>
+<!-- Total de Elogios -->
+<p>@Model.TotalElogios Feedbacks de Elogios</p>
+
+<!-- Total geral de feedbacks -->
+<div class="mt-3">
+    <strong>Total de Feedbacks: @Model.TotalFeedbacks</strong>
+</div>

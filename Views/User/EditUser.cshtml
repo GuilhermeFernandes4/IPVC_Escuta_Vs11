@@ -1,0 +1,36 @@
+﻿@model IPVC_Escuta_Vs11.ViewModels.EditUserAdminViewModel
+
+@{
+    ViewBag.Title = "Editar Utilizador";
+}
+
+<h2>Editar Utilizador</h2>
+
+<form id="EditUserForm" asp-action="EditUser" asp-controller="User" method="post">
+    <div>
+        <label asp-for="FirstName">Primeiro Nome:</label>
+        <input asp-for="FirstName" required />
+    </div>
+    <div>
+        <label asp-for="LastName">Último Nome:</label>
+        <input asp-for="LastName" required />
+    </div>
+    <div>
+        <label asp-for="Email">Email:</label>
+        <input asp-for="Email" type="email" required />
+    </div>
+    <div>
+        <label asp-for="Address">Morada:</label>
+        <input asp-for="Address"  />
+    </div>
+    <div>
+        <label asp-for="Role">Role:</label>
+        <select asp-for="Role">
+            <option value="Admin">Admin</option>
+            <option value="Aluno">Aluno</option>
+            <option value="Funcionario">Funcionário</option>
+            <option value="Professor">Professor</option>
+        </select>
+    </div>
+    <button id="editUserButton" type="submit">Atualizar Utilizador</button>
+</form>

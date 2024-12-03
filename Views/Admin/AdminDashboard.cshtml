@@ -1,0 +1,85 @@
+﻿@model List<IPVC_Escuta_Vs11.Controllers.UserRoleViewModel>
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+<link rel="stylesheet" href="~/css/site.css" />
+<h1-admin>Bem-vindo ao Painel de Administração</h1-admin>
+<p-admin>Aqui pode gerir os utilizadores, funções e outras configurações importantes do sistema.</p-admin>
+
+<div class="container mt-4">
+    <!-- Alinhar os cards em uma única linha responsiva -->
+    <div class="row row-equal row-spacing">
+        <!-- Card 1 -->
+        <div class="col-md-4 col-sm-12 mb-4">
+            <div class="card card-admin">
+                <div class="card-header bg-primary text-white">
+                    <h5>Análise de Progresso</h5>
+                </div>
+                <div class="card-body">
+                    <p>Adicione, edite ou remova utilizadores e atribua funções conforme necessário.</p>
+                    <a href="@Url.Action("AnaliseProgresso", "Feedback")" class="btn btn-info">Gestão de Utilizadores</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-md-4 col-sm-12 mb-4">
+            <div class="card card-admin">
+                <div class="card-header bg-primary text-white">
+                    <h5>Gestão de Utilizadores</h5>
+                </div>
+                <div class="card-body">
+                    <p>Adicione, edite ou remova utilizadores e atribua funções conforme necessário.</p>
+                    <a href="@Url.Action("User_Manager", "User")" class="btn btn-info">Gestão de Utilizadores</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-md-4 col-sm-12 mb-4">
+            <div class="card card-admin">
+                <div class="card-header bg-primary text-white">
+                    <h5>Relatórios e Estatísticas</h5>
+                </div>
+                <div class="card-body">
+                    <p>Acesse relatórios e dados estatísticos sobre o uso do sistema e o comportamento dos utilizadores.</p>
+                    <a href="@Url.Action("Reports", "Statistics")" class="btn btn-info">Ver Relatórios</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+
+
+<!-- Incluir os scripts do Bootstrap e jQuery -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- JavaScript para filtrar utilizadores -->
+<script>
+    function filterUsers() {
+        const input = document.getElementById("searchUser");
+        const filter = input.value.toLowerCase();
+        const table = document.getElementById("userTable");
+        const tr = table.getElementsByTagName("tr");
+
+        for (let i = 1; i < tr.length; i++) {
+            const td = tr[i].getElementsByTagName("td");
+            let isVisible = false;
+            for (let j = 0; j < td.length; j++) {
+                if (td[j]) {
+                    const txtValue = td[j].textContent || td[j].innerText;
+                    if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                        isVisible = true;
+                        break;
+                    }
+                }
+            }
+            tr[i].style.display = isVisible ? "" : "none";
+        }
+    }
+</script>

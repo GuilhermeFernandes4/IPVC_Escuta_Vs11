@@ -1,0 +1,56 @@
+﻿@using IPVC_Escuta_Vs11.Enums
+@using IPVC_Escuta_Vs11.ViewModels
+@model CreateElogioViewModel
+<link rel="stylesheet" href="~/css/site.css" />
+@{
+    ViewBag.Title = "Criar Elogio";
+}
+
+<div class="containerCreateElogioP">
+    <h1>Criar Elogio</h1>
+
+    <form asp-action="CreateElogioP" asp-controller="Elogio" method="post">
+        <!-- Campo de Email -->
+        <div class="form-group">
+            <label asp-for="Email">Email</label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <!-- Campo de Opinião -->
+        <div class="form-group">
+            <label asp-for="Opiniao">Opinião</label>
+            <textarea asp-for="Opiniao" class="form-control"></textarea>
+            <span asp-validation-for="Opiniao" class="text-danger"></span>
+        </div>
+
+        <!-- Campo de Avaliação -->
+        <div class="form-group">
+            <label asp-for="Avaliacao">Avaliação (1 a 5 estrelas)</label>
+            <select asp-for="Avaliacao" class="form-control">
+                <option value="">Selecione a avaliação</option>
+                <option value="1">1 estrela</option>
+                <option value="2">2 estrelas</option>
+                <option value="3">3 estrelas</option>
+                <option value="4">4 estrelas</option>
+                <option value="5">5 estrelas</option>
+            </select>
+            <span asp-validation-for="Avaliacao" class="text-danger"></span>
+        </div>
+
+        <!-- Tipo de Visualização -->
+        <div class="form-group">
+            <label asp-for="TipoVisualizacao">Visualização</label>
+            <select asp-for="TipoVisualizacao" asp-items="Html.GetEnumSelectList<TipoVisualizacao>()" class="form-control">
+                <option value="">Selecione o tipo de visualização</option>
+            </select>
+            <span asp-validation-for="TipoVisualizacao" class="text-danger"></span>
+        </div>
+
+        <!-- Botões -->
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary" onclick="this.disabled=true; this.form.submit();">Criar</button>
+            <button type="reset" class="btn btn-secondary">Reset</button>
+        </div>
+    </form>
+</div>

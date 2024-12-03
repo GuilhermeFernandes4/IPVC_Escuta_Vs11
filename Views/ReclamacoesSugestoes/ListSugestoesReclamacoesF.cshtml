@@ -1,0 +1,61 @@
+﻿@using IPVC_Escuta_Vs11.ViewModels
+@using IPVC_Escuta_Vs11.Models // Importando o namespace da enumeração Escola
+@using IPVC_Escuta_Vs11.Enums // Importando o namespace da enumeração Categoria
+@model List<IPVC_Escuta_Vs11.ViewModels.CreateSugestaoReclamacaoViewModel>
+
+@{
+    ViewBag.Title = "Todas as Sugestões/Reclamações";
+}
+
+<div class="container">
+    <h1>@ViewBag.Title</h1>
+
+    @if (Model == null || !Model.Any())
+    {
+        <h3>Nenhuma sugestão ou reclamação criada. Crie uma agora.</h3>
+        <a class="btn btn-primary" asp-action="CreateSugestaoReclamacaoF" asp-controller="ReclamacoesSugestoes">Criar Sugestão/Reclamação</a>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Tipo de Formulário</th>
+                    <th>Data</th>
+                    <th>Hora</th>
+                    <th>Motivo</th>
+                    <th>Descrição</th>
+                    <th>Categoria</th>
+                    <th>Escola</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.TipoFormulario.ToString()</td>
+                        <td>@item.Data.ToString("dd/MM/yyyy")</td>
+                        <td>@item.Hora</td>
+                        <td>@item.Motivo</td>
+                        <td>@item.DescricaoRec</td>
+                        <td>
+                            @(Enum.IsDefined(typeof(IPVC_Escuta_Vs11.Enums.Categoria), item.Categoria)
+                                ? item.Categoria.ToString()
+                                : "Sem categoria")
+                        </td>
+                        <td>
+                            @(Enum.IsDefined(typeof(IPVC_Escuta_Vs11.Models.Escola), item.Escola)
+                                ? item.Escola.ToString()
+                                : "Sem escola")
+                        </td>
+                        <td>
+                            <a asp-action="DeleteSugestaoReclamacaoF" asp-controller="ReclamacoesSugestoes" asp-route-IDReclamacaoSugestao="@item.IDReclamacaoSugestao" class="btn btn-danger">Apagar</a>
+                            <a asp-action="EditSugestaoReclamacaoF" asp-controller="ReclamacoesSugestoes" asp-route-IDReclamacaoSugestao="@item.IDReclamacaoSugestao" class="btn btn-primary">Editar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

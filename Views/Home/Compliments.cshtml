@@ -1,0 +1,222 @@
+﻿@{
+    ViewData["Title"] = " Página de Elogios";
+}
+<h1>@ViewData["Title"]</h1>
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário de Elogios</title>
+  <style>
+    /* Estilo do botão */
+    .open-modal-btn {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+
+    /* Estilo do modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    /* Conteúdo do modal (responsivo) */
+    .modal-content {
+      background-color: white;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 5px;
+      width: 600px;
+      max-width: 90%; /* Torna o modal responsivo */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Estilo do botão de fechar */
+    .close-btn {
+      float: right;
+      color: #aaa;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close-btn:hover,
+    .close-btn:focus {
+      color: black;
+    }
+
+    /* Estilo do formulário */
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 100%;
+      box-sizing: border-box; /* Para garantir que as margens sejam incluídas na largura */
+    }
+
+    /* Estilo das estrelas de avaliação */
+    .rating-container {
+      margin: 10px 0;
+    }
+
+    .star-rating {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .star-rating input {
+      display: none;
+    }
+
+    .star-rating label {
+      font-size: 2rem;
+      color: #ccc;
+      cursor: pointer;
+    }
+
+    .star-rating input:checked ~ label,
+    .star-rating label:hover,
+    .star-rating label:hover ~ label {
+      color: gold;
+    }
+
+    /* Estilo checkbox */
+    .checkbox-container {
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+    }
+
+    button[type="submit"] {
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #218838;
+    }
+
+    /* Responsividade com media queries */
+    media (max-width: 768px) {
+      .modal-content {
+        width: 80%;
+      }
+
+      .star-rating label {
+        font-size: 1.5rem; /* Tamanho das estrelas reduzido em telas menores */
+      }
+    }
+
+    media (max-width: 480px) {
+      .modal-content {
+        width: 95%; /* Quase tela cheia em dispositivos móveis */
+      }
+
+      .star-rating label {
+        font-size: 1.2rem; /* Ainda menor para telas muito pequenas */
+      }
+
+      button[type="submit"],
+      .open-modal-btn {
+        font-size: 14px; /* Texto menor nos botões em dispositivos pequenos */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Botão para abrir o modal -->
+  <button class="open-modal-btn" id="openModalBtn">Dar Elogio</button>
+
+  <!-- Modal -->
+  <div class="modal" id="praiseModal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeModalBtn">&times;</span>
+      <h2>Formulário de Elogios</h2>
+      <form>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Seu email" required>
+
+        <label for="opinion">Sua Opinião:</label>
+        <textarea id="opinion" name="opinion" rows="4" placeholder="Deixe sua opinião" required></textarea>
+
+        <!-- Avaliação por estrelas -->
+        <div class="rating-container">
+          <label>Avaliação:</label>
+          <div class="star-rating">
+            <input type="radio" id="star5" name="rating" value="5">
+            <label for="star5">★</label>
+            <input type="radio" id="star4" name="rating" value="4">
+            <label for="star4">★</label>
+            <input type="radio" id="star3" name="rating" value="3">
+            <label for="star3">★</label>
+            <input type="radio" id="star2" name="rating" value="2">
+            <label for="star2">★</label>
+            <input type="radio" id="star1" name="rating" value="1">
+            <label for="star1">★</label>
+          </div>
+        </div>
+
+        <!-- Checkbox para tornar a opinião privada -->
+        <div class="checkbox-container">
+          <input type="checkbox" id="private" name="private">
+          <label for="private">Desejo que minha opinião seja privada</label>
+        </div>
+
+        <button type="submit">Enviar Elogio</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Abrir modal
+    const modal = document.getElementById("praiseModal");
+    const openModalBtn = document.getElementById("openModalBtn");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+
+    openModalBtn.onclick = function() {
+      modal.style.display = "block";
+    }
+
+    // Fechar modal
+    closeModalBtn.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // Fechar modal ao clicar fora da área de conteúdo
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+</html>
+

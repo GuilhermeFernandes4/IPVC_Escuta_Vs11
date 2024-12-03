@@ -1,0 +1,84 @@
+﻿@using IPVC_Escuta_Vs11.Enums
+@using IPVC_Escuta_Vs11.ViewModels
+@model CreateElogioViewModel
+
+@{
+    ViewBag.Title = "Criar Elogio";
+}
+
+<div class="containerCreateElogio">
+    <h1 class="text-center">Criar Elogio</h1>
+
+    <form asp-action="CreateElogio" asp-controller="Elogio" method="post" novalidate>
+        <!-- Campo de Email -->
+        <div class="form-group">
+            <label asp-for="Email" for="Email" class="form-label">Email</label>
+            <input asp-for="Email" id="Email" class="form-control" required aria-label="Digite seu email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <!-- Campo de Opinião -->
+        <div class="form-group mt-3">
+            <label asp-for="Opiniao" for="Opiniao" class="form-label">Opinião</label>
+            <textarea asp-for="Opiniao" id="Opiniao" class="form-control" rows="5" required aria-label="Digite sua opinião"></textarea>
+            <span asp-validation-for="Opiniao" class="text-danger"></span>
+        </div>
+
+        <!-- Campo de Avaliação com Estrelas -->
+        <div class="form-group mt-3">
+            <label class="form-label">Avaliação (1 a 5 estrelas)</label>
+            <div class="stars" id="stars">
+                <span class="star" data-value="1">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="5">&#9733;</span>
+            </div>
+            <input type="hidden" asp-for="Avaliacao" id="Avaliacao" name="Avaliacao" />
+            <span asp-validation-for="Avaliacao" class="text-danger"></span>
+        </div>
+
+        <!-- Tipo de Visualização -->
+        <div class="form-group mt-3">
+            <label asp-for="TipoVisualizacao" for="TipoVisualizacao" class="form-label">Visualização</label>
+            <select asp-for="TipoVisualizacao" asp-items="Html.GetEnumSelectList<TipoVisualizacao>()" id="TipoVisualizacao" class="form-control" required aria-label="Selecione o tipo de visualização">
+                <option value="" disabled selected>Selecione o tipo de visualização</option>
+            </select>
+            <span asp-validation-for="TipoVisualizacao" class="text-danger"></span>
+        </div>
+
+        <!-- Botões -->
+        <div class="form-group text-center mt-4">
+            <button type="submit" class="btn btn-primary" id="submitButton" onclick="disableButton(this)">Criar</button>
+            <button type="reset" class="btn btn-secondary ms-2">Reset</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    // Função para ativar as estrelas
+    const stars = document.querySelectorAll('.star');
+    const hiddenInput = document.getElementById('Avaliacao');
+
+    stars.forEach(star => {
+        star.addEventListener('click', function() {
+            // Define o valor da avaliação no input oculto
+            hiddenInput.value = this.getAttribute('data-value');
+
+            // Atualiza o estilo das estrelas
+            stars.forEach(star => {
+                star.style.color = '#ddd'; // Cor padrão
+            });
+            for (let i = 0; i < this.getAttribute('data-value'); i++) {
+                stars[i].style.color = '#FFD700'; // Cor das estrelas selecionadas
+            }
+        });
+    });
+
+    // Função para desabilitar o botão de envio
+    function disableButton(button) {
+        button.disabled = true;
+        button.innerHTML = "Enviando...";
+        button.form.submit();
+    }
+</script>

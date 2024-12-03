@@ -1,0 +1,47 @@
+﻿@using IPVC_Escuta_Vs11.ViewModels
+@using IPVC_Escuta_Vs11.Enums
+@model List<IPVC_Escuta_Vs11.ViewModels.CreateElogioViewModel>
+
+@{
+    ViewBag.Title = "Todos os Elogios";
+}
+
+<div class="container">
+    <h1>@ViewBag.Title</h1>
+
+    <a class="btn btn-primary mb-3" asp-action="CreateElogioP" asp-controller="Elogio">Criar Elogio</a>
+
+    @if (Model == null || !Model.Any())
+    {
+        <h3>Nenhum elogio criado. Crie um agora.</h3>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Opinião</th>
+                    <th>Avaliação</th>
+                    <th>Visualização</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Email</td>
+                        <td>@item.Opiniao</td>
+                        <td>@item.Avaliacao</td>
+                        <td>@Enum.GetName(typeof(TipoVisualizacao), item.TipoVisualizacao)</td>
+                        <td>
+                            <a asp-action="DeleteElogioP" asp-controller="Elogio" asp-route-Id="@item.Id" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja apagar este elogio?');">Apagar</a>
+                            <a asp-action="EditElogioP" asp-controller="Elogio" asp-route-Id="@item.Id" class="btn btn-primary">Editar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

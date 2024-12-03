@@ -1,0 +1,76 @@
+﻿@model IPVC_Escuta_Vs11.ViewModels.RegisterVM
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+           
+            <form asp-action="Register" class="p-4 border rounded shadow-sm bg-white">
+                <h2 class="text-center mb-4">Resgiste-se</h2>
+                <!-- Nome e Apelido -->
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="FirstName" class="form-label">Nome</label>
+                        <input asp-for="FirstName" class="form-control" placeholder="Enter your first name" />
+                        <span asp-validation-for="FirstName" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="LastName" class="form-label">Apelido</label>
+                        <input asp-for="LastName" class="form-control" placeholder="Enter your last name" />
+                        <span asp-validation-for="LastName" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label">Email</label>
+                    <input asp-for="Email" type="email" class="form-control" placeholder="Enter your email address" />
+                    <span asp-validation-for="Email" class="text-danger small"></span>
+                </div>
+
+                <!-- Password e Confirmar Password -->
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="Password" class="form-label">Password</label>
+                        <input asp-for="Password" type="password" class="form-control" placeholder="Enter your password" />
+                        <span asp-validation-for="Password" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="ConfirmPassword" class="form-label">Confirme a Password</label>
+                        <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm your password" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <!-- Endereço -->
+                <div class="mb-3">
+                    <label asp-for="Address" class="form-label">Morada</label>
+                    <input asp-for="Address" class="form-control" placeholder="Enter your address" />
+                    <span asp-validation-for="Address" class="text-danger small"></span>
+                </div>
+
+                <!-- Papel -->
+                <div class="mb-3">
+                    <label asp-for="Role" class="form-label">Regra</label>
+                    <select asp-for="Role" class="form-select">
+                        <option value="">Selecione um papel</option>
+                        <option value="Professor">Professor</option>
+                        <option value="Funcionario">Funcionário</option>
+                        <option value="Aluno">Aluno</option>
+                    </select>
+                    <span asp-validation-for="Role" class="text-danger small"></span>
+                </div>
+
+                <!-- Botão de submissão -->
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Registar
+                    </button>
+                </div>
+
+                <!-- Link para Login -->
+                <div class="text-center mt-3">
+                    <a asp-action="Login" class="text-decoration-none">Esqueceste-te da tua Conta? <strong>Inicia Sessão aqui</strong></a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Funcionario Dashboard";
+}
+<link rel="stylesheet" href="~/css/site.css" />
+
+<!-- Título e Descrição -->
+<h1-funcionario>Bem-vindo ao Painel do Funcionário</h1>
+<p-funcionario>Aqui pode aceder às suas tarefas e funcionalidades específicas da função.</p-funcionario>
+
+<!-- Container do conteúdo do funcionário -->
+<div class="container-funcionario">
+    <div class="card-container-funcionario">
+
+        <!-- Card 1 - Dashboard -->
+        <div class="card">
+            <h2>Dashboard</h2>
+            <p>Nesta página pode visualizar todos os tipos de comentários (Reclamações, Sugestões, Elogios).</p>
+            <a href="@Url.Action("Dashboard", "Home")">Aceder</a>
+        </div>
+
+        <!-- Card 2 - Sugestões e Reclamação -->
+        <div class="card">
+            <h2>Sugestões e Reclamação</h2>
+            <p>Aqui poderá partilhar as suas sugestões sobre a Escola.</p>
+            <a href="@Url.Action("CreateSugestaoReclamacaoF", "ReclamacoesSugestoes")">Aceder</a>
+        </div>
+
+        <!-- Card 3 - Elogios -->
+        <div class="card">
+            <h2>Elogios</h2>
+            <p>Aqui poderá partilhar os seus elogios e avaliações sobre a Escola.</p>
+            <a href="@Url.Action("CreateElogioF", "Elogio")">Aceder</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Página do Aluno";
+}
+<link rel="stylesheet" href="~/css/site.css" />
+
+<h1-aluno>Página do Aluno</h1-aluno>
+<p-aluno>Bem-vindo à sua página, @User.Identity.Name!</p-aluno>
+
+<div class="container-aluno">
+    <div class="card-container-aluno">
+        <div class="card">
+            <h2>Dashboard</h2>
+            <p>Nesta página pode visualizar todos os tipos de comentários (Reclamações, Sugestões, Elogios).</p>
+            <a href="@Url.Action("Dashboard", "Home")">Aceder</a>
+        </div>
+        <div class="card">
+            <h2>Sugestões e Reclamação</h2>
+            <p>Aqui poderá partilhar as suas sugestões sobre a Escola.</p>
+            <a href="@Url.Action("CreateSugestaoReclamacao", "ReclamacoesSugestoes")">Aceder</a>
+        </div>
+        
+        <div class="card">
+            <h2>Elogios</h2>
+            <p>Aqui poderá partilhar os seus elogios e avaliações sobre a Escola.</p>
+            <a href="@Url.Action("CreateElogio", "Elogio")">Aceder</a>
+        </div>
+    </div>
+</div>
