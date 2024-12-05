@@ -4,74 +4,81 @@
 @{
     ViewBag.Title = "Dashboard";
 }
+<link rel="stylesheet" href="~/css/site.css" />
 
 <!-- Cabeçalho -->
-<header>
+<header class="container text-center my-4">
     <h1>Dashboard</h1>
 </header>
 
 <!-- Layout Principal -->
-<div id="layout-dashboard">
+<div class="container-fluid">
+    <div class="row">
 
-    <!-- Menu Lateral -->
-    <div id="menu-lateral">
-        <button class="menu-btn" id="mostrar-reclamacoes">Reclamações</button>
-        <button class="menu-btn" id="mostrar-elogios">Elogios</button>
-        <button class="menu-btn" id="mostrar-sugestoes">Sugestões</button>
+        <!-- Menu Lateral -->
+        <nav class="col-md-3 col-12 mb-3">
+            <div class="d-flex flex-md-column flex-row justify-content-around">
+                <button class="btn btn-outline-primary w-100 my-2" id="mostrar-reclamacoes">Reclamações</button>
+                <button class="btn btn-outline-success w-100 my-2" id="mostrar-elogios">Elogios</button>
+                <button class="btn btn-outline-secondary w-100 my-2" id="mostrar-sugestoes">Sugestões</button>
+            </div>
+        </nav>
+
+        <!-- Conteúdo -->
+        <main class="col-md-9 col-12">
+            <!-- Informações Gerais e Dados -->
+            <div id="informacoes-gerais" class="content-section">
+                <h2>Informações Gerais</h2>
+                <p>Aqui você pode ver as reclamações, elogios e sugestões dos usuários. Clique nas opções do menu lateral para visualizar as seções específicas.</p>
+                <p>Reclamações, elogios e sugestões são importantes para melhorar a qualidade dos serviços prestados. Clique nas opções ao lado para visualizar as seções.</p>
+
+                <!-- Reclamações -->
+                <div id="reclamacoes-container" class="content-section" style="display: block;">
+                    <h3>Reclamações</h3>
+                    @foreach (var item in Model.ReclamacoesSugestoes)
+                    {
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <p><strong>Motivo:</strong> @item.Motivo</p>
+                                <p><strong>Descrição:</strong> @item.DescricaoRec</p>
+                                <p><strong>Categoria:</strong> @item.Categoria.ToString("G")</p>
+                                <p><strong>Escola:</strong> @item.Escola</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <!-- Elogios -->
+                <div id="elogios-container" class="content-section" style="display: none;">
+                    <h3>Elogios</h3>
+                    @foreach (var elogio in Model.Elogios)
+                    {
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <p><strong>Email/Nome:</strong> @elogio.Email</p>
+                                <p><strong>Opinião:</strong> @elogio.Opiniao</p>
+                                <p>
+                                    <strong>Avaliação:</strong>
+                                    @for (int i = 0; i < elogio.Avaliacao; i++)
+                                    {
+                                        <span>★</span>
+                                    }
+                                </p>
+                                <p><strong>Tipo de Visualização:</strong> @elogio.TipoVisualizacao.ToString("G")</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <!-- Sugestões -->
+                <div id="sugestoes-container" class="content-section" style="display: none;">
+                    <h3>Sugestões</h3>
+                    <p>Não há sugestões registradas no momento.</p>
+                </div>
+            </div>
+        </main>
+
     </div>
-
-    <!-- Conteúdo -->
-    <div id="conteudo-principal">
-
-        <!-- Informações Gerais e Dados -->
-        <div id="informacoes-gerais" class="content-section">
-            <h2>Informações Gerais</h2>
-            <p>Aqui você pode ver as reclamações, elogios e sugestões dos usuários. Clique nas opções do menu lateral para visualizar as seções específicas.</p>
-            <p>Reclamações, elogios e sugestões são importantes para melhorar a qualidade dos serviços prestados. Clique nas opções ao lado para visualizar as seções.</p>
-
-            <!-- Reclamações -->
-            <div id="reclamacoes-container" class="content-section" style="display: block;">
-                <h3>Reclamações</h3>
-                @foreach (var item in Model.ReclamacoesSugestoes)
-                {
-                    <div class="content-card">
-                        <p><strong>Motivo:</strong> @item.Motivo</p>
-                        <p><strong>Descrição:</strong> @item.DescricaoRec</p>
-                        <p><strong>Categoria:</strong> @item.Categoria.ToString("G")</p>
-                        <p><strong>Escola:</strong> @item.Escola</p>
-                    </div>
-                }
-            </div>
-
-            <!-- Elogios -->
-            <div id="elogios-container" class="content-section" style="display: none;">
-                <h3>Elogios</h3>
-                @foreach (var elogio in Model.Elogios)
-                {
-                    <div class="content-card">
-                        <p><strong>Email/Nome:</strong> @elogio.Email</p>
-                        <p><strong>Opinião:</strong> @elogio.Opiniao</p>
-                        <p>
-                            <strong>Avaliação:</strong>
-                            @for (int i = 0; i < elogio.Avaliacao; i++)
-                            {
-                                <span>★</span>
-                            }
-                        </p>
-                        <p><strong>Tipo de Visualização:</strong> @elogio.TipoVisualizacao.ToString("G")</p>
-                    </div>
-                }
-            </div>
-
-            <!-- Sugestões -->
-            <div id="sugestoes-container" class="content-section" style="display: none;">
-                <h3>Sugestões</h3>
-                <p>Não há sugestões registradas no momento.</p>
-            </div>
-        </div>
-
-    </div>
-
 </div>
 
 <!-- Scripts para controle de visibilidade -->

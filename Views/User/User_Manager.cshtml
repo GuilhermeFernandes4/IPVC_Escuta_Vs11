@@ -3,37 +3,46 @@
 @{
     ViewData["Title"] = "Gestão de Utilizadores";
 }
+<link rel="stylesheet" href="~/css/site.css" />
+<div class="container mt-4">
+    <h2 class="text-center">Gestão de Utilizadores</h2>
 
-<h2>Gestão de Utilizadores</h2>
+    <!-- Botão para criar utilizadores -->
+    <div class="d-flex justify-content-end mb-3">
+        <a href="@Url.Action("CreateUser", "User")" class="btn btn-primary">
+            Criar Utilizador
+        </a>
+    </div>
 
-<!-- Botão para criar utilizadores -->
-<a href="@Url.Action("CreateUser", "User")" class="btn btn-primary">
-    Criar Utilizador
-</a>
-
-<table class="table table-bordered mt-3" id="userTable">
-    <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Email</th>
-            <th>Endereço</th>
-            <th>Data de Registro</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var user in Model)
-        {
-            <tr>
-                <td>@user.FirstName @user.LastName</td> <!-- Correção aqui: combinando o nome e sobrenome -->
-                <td>@user.Email</td>
-                <td>@user.Address</td>
-                <td>@user.Regist_Date?.ToString("dd/MM/yyyy")</td>
-                <td>
-                    <a asp-controller="User" asp-action="EditUser" asp-route-id="@user.Id.ToString()" class="btn btn-warning btn-sm">Editar</a>
-                    <a asp-controller="User" asp-action="DeleteUser" asp-route-id="@user.Id.ToString()" class="btn btn-danger btn-sm">Excluir </a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+    <!-- Tabela responsiva -->
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover" id="userTable">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Endereço</th>
+                    <th>Data de Registro</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.FirstName @user.LastName</td> <!-- Nome completo -->
+                        <td>@user.Email</td>
+                        <td>@user.Address</td>
+                        <td>@user.Regist_Date?.ToString("dd/MM/yyyy")</td>
+                        <td>
+                            <div class="d-flex flex-wrap gap-2">
+                                <a asp-controller="User" asp-action="EditUser" asp-route-id="@user.Id.ToString()" class="btn btn-warning btn-sm">Editar</a>
+                                <a asp-controller="User" asp-action="DeleteUser" asp-route-id="@user.Id.ToString()" class="btn btn-danger btn-sm">Excluir</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

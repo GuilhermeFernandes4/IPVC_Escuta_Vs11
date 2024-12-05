@@ -1,61 +1,65 @@
 ﻿@using IPVC_Escuta_Vs11.ViewModels
-@using IPVC_Escuta_Vs11.Models // Importando o namespace da enumeração Escola
-@using IPVC_Escuta_Vs11.Enums // Importando o namespace da enumeração Categoria
+@using IPVC_Escuta_Vs11.Models 
+@using IPVC_Escuta_Vs11.Enums 
 @model List<IPVC_Escuta_Vs11.ViewModels.CreateSugestaoReclamacaoViewModel>
 
 @{
     ViewBag.Title = "Todas as Sugestões/Reclamações";
 }
 
-<div class="container">
-    <h1>@ViewBag.Title</h1>
+<div class="container my-4">
+    <h1 class="text-center mb-4">@ViewBag.Title</h1>
 
     @if (Model == null || !Model.Any())
     {
-        <h3>Nenhuma sugestão ou reclamação criada. Crie uma agora.</h3>
-        <a class="btn btn-primary" asp-action="CreateSugestaoReclamacao" asp-controller="ReclamacoesSugestoes">Criar Sugestão/Reclamação</a>
+        <div class="text-center">
+            <h3>Nenhuma sugestão ou reclamação criada. Crie uma agora.</h3>
+            <a class="btn btn-primary mt-3" asp-action="CreateSugestaoReclamacao" asp-controller="ReclamacoesSugestoes">Criar Sugestão/Reclamação</a>
+        </div>
     }
     else
     {
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Tipo de Formulário</th>
-                    <th>Data</th>
-                    <th>Hora</th>
-                    <th>Motivo</th>
-                    <th>Descrição</th>
-                    <th>Categoria</th>
-                    <th>Escola</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-light">
                     <tr>
-                        <td>@item.TipoFormulario.ToString()</td>
-                        <td>@item.Data.ToString("dd/MM/yyyy")</td>
-                        <td>@item.Hora</td>
-                        <td>@item.Motivo</td>
-                        <td>@item.DescricaoRec</td>
-                        <td>
-                            @(Enum.IsDefined(typeof(IPVC_Escuta_Vs11.Enums.Categoria), item.Categoria)
-                                ? item.Categoria.ToString()
-                                : "Sem categoria")
-                        </td>
-                        <td>
-                            @(Enum.IsDefined(typeof(IPVC_Escuta_Vs11.Models.Escola), item.Escola)
-                                ? item.Escola.ToString()
-                                : "Sem escola")
-                        </td>
-                        <td>
-                            <a asp-action="DeleteSugestaoReclamacao" asp-controller="ReclamacoesSugestoes" asp-route-IDReclamacaoSugestao="@item.IDReclamacaoSugestao" class="btn btn-danger">Apagar</a>
-                            <a asp-action="EditSugestaoReclamacao" asp-controller="ReclamacoesSugestoes" asp-route-IDReclamacaoSugestao="@item.IDReclamacaoSugestao" class="btn btn-primary">Editar</a>
-                        </td>
+                        <th>Tipo de Formulário</th>
+                        <th>Data</th>
+                        <th>Hora</th>
+                        <th>Motivo</th>
+                        <th>Descrição</th>
+                        <th>Categoria</th>
+                        <th>Escola</th>
+                        <th class="text-center">Ações</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.TipoFormulario.ToString()</td>
+                            <td>@item.Data.ToString("dd/MM/yyyy")</td>
+                            <td>@item.Hora</td>
+                            <td>@item.Motivo</td>
+                            <td>@item.DescricaoRec</td>
+                            <td>
+                                @(Enum.IsDefined(typeof(IPVC_Escuta_Vs11.Enums.Categoria), item.Categoria)
+                                    ? item.Categoria.ToString()
+                                    : "Sem categoria")
+                            </td>
+                            <td>
+                                @(Enum.IsDefined(typeof(IPVC_Escuta_Vs11.Models.Escola), item.Escola)
+                                    ? item.Escola.ToString()
+                                    : "Sem escola")
+                            </td>
+                            <td class="text-center">
+                                <a asp-action="DeleteSugestaoReclamacao" asp-controller="ReclamacoesSugestoes" asp-route-IDReclamacaoSugestao="@item.IDReclamacaoSugestao" class="btn btn-danger btn-sm">Apagar</a>
+                                <a asp-action="EditSugestaoReclamacao" asp-controller="ReclamacoesSugestoes" asp-route-IDReclamacaoSugestao="@item.IDReclamacaoSugestao" class="btn btn-primary btn-sm">Editar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     }
 </div>

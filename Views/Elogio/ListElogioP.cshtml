@@ -6,42 +6,55 @@
     ViewBag.Title = "Todos os Elogios";
 }
 
-<div class="container">
-    <h1>@ViewBag.Title</h1>
+<div class="container my-4">
+    <h1 class="text-center">@ViewBag.Title</h1>
 
-    <a class="btn btn-primary mb-3" asp-action="CreateElogioP" asp-controller="Elogio">Criar Elogio</a>
+    <!-- Botão para criar novo elogio -->
+    <div class="d-flex justify-content-end mb-3">
+        <a class="btn btn-primary" asp-action="CreateElogioP" asp-controller="Elogio">Criar Elogio</a>
+    </div>
 
     @if (Model == null || !Model.Any())
     {
-        <h3>Nenhum elogio criado. Crie um agora.</h3>
+        <h3 class="text-center">Nenhum elogio criado. Crie um agora.</h3>
     }
     else
     {
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Email</th>
-                    <th>Opinião</th>
-                    <th>Avaliação</th>
-                    <th>Visualização</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
+        <!-- Tabela responsiva -->
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+                <thead class="thead-dark">
                     <tr>
-                        <td>@item.Email</td>
-                        <td>@item.Opiniao</td>
-                        <td>@item.Avaliacao</td>
-                        <td>@Enum.GetName(typeof(TipoVisualizacao), item.TipoVisualizacao)</td>
-                        <td>
-                            <a asp-action="DeleteElogioP" asp-controller="Elogio" asp-route-Id="@item.Id" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja apagar este elogio?');">Apagar</a>
-                            <a asp-action="EditElogioP" asp-controller="Elogio" asp-route-Id="@item.Id" class="btn btn-primary">Editar</a>
-                        </td>
+                        <th>Email</th>
+                        <th>Opinião</th>
+                        <th>Avaliação</th>
+                        <th>Visualização</th>
+                        <th>Ações</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Email</td>
+                            <td>@item.Opiniao</td>
+                            <td>
+                                @for (int i = 0; i < item.Avaliacao; i++)
+                                {
+                                    <span>★</span>
+                                }
+                            </td>
+                            <td>@Enum.GetName(typeof(TipoVisualizacao), item.TipoVisualizacao)</td>
+                            <td>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <a asp-action="EditElogioP" asp-controller="Elogio" asp-route-Id="@item.Id" class="btn btn-primary btn-sm">Editar</a>
+                                    <a asp-action="DeleteElogioP" asp-controller="Elogio" asp-route-Id="@item.Id" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja apagar este elogio?');">Apagar</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     }
 </div>
