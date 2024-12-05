@@ -1665,3 +1665,125 @@ p {
     }
 
 </style >
+
+
+/* Container */
+.container {
+    max-width: 360px; /* Define a largura máxima */
+    width: 100%; /* Para dispositivos pequenos */
+    margin: 20px auto; /* Centraliza com margem automática */
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Título */
+.container h2 {
+    text-align: center;
+    font-size: 20px; /* Menor */
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Formulário */
+#createUserForm div {
+    margin-bottom: 10px;
+}
+
+#createUserForm label {
+    display: block;
+    font-weight: bold;
+    color: #555;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+#createUserForm input, 
+#createUserForm select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+#createUserForm input:focus, 
+#createUserForm select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+#createUserButton {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#createUserButton:hover {
+    background-color: #0056b3;
+}
+
+/* Responsividade */
+@media (max-width: 400px) {
+    .container {
+        padding: 15px;
+    }
+}
+
+#EditUserForm div {
+    margin-bottom: 10px;
+}
+
+#EditUserForm label {
+    display: block;
+    font-weight: bold;
+    color: #555;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+#EditUserForm input,
+#EditUserForm select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+    #EditUserForm input:focus,
+    #EditUserForm select:focus {
+        border-color: #28a745; /* Verde para destacar a edição */
+        outline: none;
+    }
+
+/* Botão de atualizar */
+#editUserButton {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745; /* Verde para edição */
+    color: #fff;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    #editUserButton:hover {
+        background-color: #218838;
+    }
+
+/* Responsividade */
+@media (max-width: 400px) {
+    .container {
+        padding: 15px;
+    }
+}
