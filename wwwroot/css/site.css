@@ -1,3 +1,60 @@
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px; /* Aumenta o tamanho da fonte para 16px em telas maiores */
+    }
+    .card {
+        width: 90%; /* Ajusta a largura do cartão para 90% em telas menores */
+    }
+
+    .profile-container {
+        max-width: 90%; /* Ajusta a largura do perfil para 90% em telas menores */
+    }
+    .header-sobre h1 {
+        font-size: 2rem;
+    }
+
+    .header-sobre p {
+        font-size: 1rem;
+    }
+
+    .nav-sobre a {
+        margin: 0 10px;
+        font-size: 0.9rem;
+    }
+
+    #sobre h2, #cursos h2 {
+        font-size: 1.5rem;
+    }
+
+    .card-sobre h3 {
+        font-size: 1.2rem;
+    }
+
+    .PagInicial .carousel-item img {
+        height: 300px; /* Ajusta o tamanho da imagem do carrossel em dispositivos móveis */
+    }
+
+    .PagInicial .card-index {
+        width: 100%;
+    }
+
+    .PagInicial .container-fluid {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+       
+    
+}
+
+
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
 /* Estilos Globais */
 html {
     font-size: 14px; /* Define o tamanho base da fonte como 14px */
@@ -5,11 +62,15 @@ html {
     min-height: 100%; /* Faz com que o HTML ocupe a altura mínima de 100% da tela */
 }
 
-@media (min-width: 768px) {
-    html {
-        font-size: 16px; /* Aumenta o tamanho da fonte para 16px em telas maiores */
-    }
+/* Cabeçalho */
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
 }
+
+
 
 body {
     font-family: Arial, sans-serif; /* Define a fonte do corpo como Arial */
@@ -17,7 +78,23 @@ body {
     margin: 0; /* Remove a margem padrão */
     padding: 0; /* Remove o padding padrão */
     margin-bottom: 60px; /* Garante que o espaço inferior no body esteja presente */
+    color: #333;
+    font-size: 16px;
 }
+
+/* Estilo do rodapé */
+footer {
+    background-color: #f4f4f4; /* Cor de fundo suave para o rodapé */
+    text-align: center; /* Centraliza o texto dentro do rodapé */
+    width: 100%; /* Garante que o rodapé ocupe toda a largura da página */
+    padding: 20px; /* Espaçamento interno no rodapé */
+    position: relative;
+    bottom: 0;
+}
+
+
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 /* Estilo para centralizar os elementos (h1 e p) */
 h1-aluno, p-aluno, h1-funcionario, p-funcionario, h1-professor, p-professor, h1-admin, p-admin {
@@ -28,10 +105,10 @@ h1-aluno, p-aluno, h1-funcionario, p-funcionario, h1-professor, p-professor, h1-
 }
 
 /* Estilo para títulos gerais */
-h1, h2 {
+h1, h2, h3 {
     color: #333; /* Cor escura para os títulos */
     margin-bottom: 20px; /* Espaçamento inferior nos títulos */
-    font-size: 28px; /* Define o tamanho da fonte dos títulos */
+    font-size: 24px; /* Define o tamanho da fonte dos títulos */
 }
 
 /* Estilos de Botões e Foco */
@@ -39,7 +116,12 @@ h1, h2 {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb; /* Adiciona um efeito de foco com borda azul */
 }
 
-/* Estilos de Perfil */
+
+
+
+/*----------------------------------------------------------------------------------------------------------------------------------*/
+/*Página Profile - Estilos de Perfil*/
+
 .profile-container {
     max-width: 600px; /* Limita a largura máxima para o perfil */
     margin: 50px auto; /* Centraliza o container do perfil */
@@ -70,7 +152,9 @@ h1, h2 {
         margin: 0; /* Remove a margem */
     }
 
-/* Estilos do Formulário de Login */
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------*/
+/* Página Login- Estilos do Formulário de Login */
 .card {
     background-color: #fff; /* Cor de fundo branca para o cartão de login */
     border-radius: 8px; /* Borda arredondada */
@@ -113,9 +197,7 @@ h1, h2 {
    
 }
 
-    .text-decoration-none:hover {
-     
-    }
+
 
 /* Estilos de Float */
 .float-start {
@@ -140,16 +222,7 @@ h1, h2 {
         background-color: #0056b3; /* Cor de fundo mais escura no hover */
     }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    .card {
-        width: 90%; /* Ajusta a largura do cartão para 90% em telas menores */
-    }
 
-    .profile-container {
-        max-width: 90%; /* Ajusta a largura do perfil para 90% em telas menores */
-    }
-}
 
 /* Containers para diferentes tipos de usuários */
 .container-aluno, .container-funcionario, .container-professor {
@@ -167,15 +240,6 @@ h1, h2 {
     max-width: 1200px; /* Define a largura máxima */
 }
 
-/* Estilo do rodapé */
-footer {
-    background-color: #f4f4f4; /* Cor de fundo suave para o rodapé */
-    text-align: center; /* Centraliza o texto dentro do rodapé */
-    width: 100%; /* Garante que o rodapé ocupe toda a largura da página */
-    padding: 20px; /* Espaçamento interno no rodapé */
-    position: relative;
-    bottom: 0;
-}
 
 /* Containers gerais */
 .container {
@@ -335,41 +399,9 @@ nav {
         color: #555;
     }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    .header-sobre h1 {
-        font-size: 2rem;
-    }
 
-    .header-sobre p {
-        font-size: 1rem;
-    }
 
-    .nav-sobre a {
-        margin: 0 10px;
-        font-size: 0.9rem;
-    }
 
-    #sobre h2, #cursos h2 {
-        font-size: 1.5rem;
-    }
-
-    .card-sobre h3 {
-        font-size: 1.2rem;
-    }
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-}
-
-.header {
-    background-color: #007bff;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-}
 
     .header h1 {
         font-size: 36px;
@@ -412,13 +444,6 @@ body {
         padding-left: 20px;
     }
 
-/* Estilo geral para o corpo da página */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa; /* Cor de fundo suave */
-    margin: 0;
-    padding: 0;
-}
 
 /* Estilo para o container principal da Página Inicial */
 .PagInicial {
@@ -505,38 +530,10 @@ body {
     margin-bottom: 15px;
 }
 
-/* Estilo para a responsividade */
-@media (max-width: 768px) {
-    /* Ajuste do carrossel e dos cards em dispositivos móveis */
-    .PagInicial .carousel-item img {
-        height: 300px; /* Ajusta o tamanho da imagem do carrossel em dispositivos móveis */
-    }
-
-    .PagInicial .card-index {
-        width: 100%;
-    }
-
-    .PagInicial .container-fluid {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-}
-
-@media (max-width: 992px) {
-    .PagInicial .container-fluid {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-}
 
 
-/* Estilo geral para o corpo da página */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4; /* Cor de fundo suave */
-    margin: 0;
-    padding: 0;
-}
+
+
 
 
 /* Estilo para o container principal da página Sobre Projeto */
@@ -1576,23 +1573,9 @@ body {
     font-family: Arial, sans-serif;
 }
 
-body {
-    background-color: #f4f4f9;
-    color: #333;
-    font-size: 16px;
-}
 
-/* Cabeçalho */
-header {
-    
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
 
-h1 {
-    font-size: 28px;
-}
+
 
 /* Layout */
 #layout-dashboard {
@@ -1639,10 +1622,7 @@ h1 {
     margin-bottom: 10px;
 }
 
-h2, h3 {
-    font-size: 24px;
-    margin-bottom: 15px;
-}
+
 
 p {
     margin-bottom: 10px;
@@ -1730,12 +1710,6 @@ p {
     background-color: #0056b3;
 }
 
-/* Responsividade */
-@media (max-width: 400px) {
-    .container {
-        padding: 15px;
-    }
-}
 
 #EditUserForm div {
     margin-bottom: 10px;
@@ -1781,9 +1755,3 @@ p {
         background-color: #218838;
     }
 
-/* Responsividade */
-@media (max-width: 400px) {
-    .container {
-        padding: 15px;
-    }
-}
