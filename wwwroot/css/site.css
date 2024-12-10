@@ -57,7 +57,7 @@
 
 /* Estilos Globais */
 html {
-    font-size: 14px; /* Define o tamanho base da fonte como 14px */
+    font-size: 16px; /* Define o tamanho base da fonte como 14px */
     position: relative; /* Garante que a posição da página seja relativa */
     min-height: 100%; /* Faz com que o HTML ocupe a altura mínima de 100% da tela */
 }
@@ -91,7 +91,6 @@ footer {
     position: relative;
     bottom: 0;
 }
-
 
 
 /*-------------------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -213,14 +212,12 @@ h1, h2, h3 {
     display: inline-block; /* Exibe o link como um bloco inline */
     margin-top: 10px; /* Margem superior */
     text-decoration: none; /* Remove a decoração do texto */
-    color: white; /* Cor do texto do link */
-    background-color: #007BFF; /* Cor de fundo azul para o link */
+    color: black; /* Cor do texto do link */
+    
     border-radius: 5px; /* Borda arredondada */
 }
 
-    .card a:hover {
-        background-color: #0056b3; /* Cor de fundo mais escura no hover */
-    }
+ 
 
 
 
@@ -241,10 +238,10 @@ h1, h2, h3 {
 }
 
 
-/* Containers gerais */
-.container {
-    margin-top: 20px; /* Adiciona margem superior para containers */
-}
+
+
+
+/*-------------------------------------------------------------------------------------------------------------------------------------*/
 
 /* Informações de contato */
 .contact-info {
@@ -263,7 +260,9 @@ h1, h2, h3 {
     max-width: 100%; /* Ajusta a largura máxima da modal */
 }
 
-/* Estilo do card no painel de admin */
+/*--------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/* Admin Page- Estilo do card no painel de admin */
 .card-admin {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra no card de admin */
     transition: 0.3s; /* Transição suave para transformações */
@@ -301,7 +300,7 @@ nav {
 
 /* Estilo para o cabeçalho */
 .header-sobre {
-    background-color: #003366;
+    background-color: #1683f0;
     color: white;
     padding: 20px;
     text-align: center;
@@ -1564,6 +1563,8 @@ nav {
 
 
 
+
+
 <style >
 /* Resetando estilo padrão */
 * {
@@ -1645,113 +1646,3 @@ p {
     }
 
 </style >
-
-
-/* Container */
-.container {
-    max-width: 360px; /* Define a largura máxima */
-    width: 100%; /* Para dispositivos pequenos */
-    margin: 20px auto; /* Centraliza com margem automática */
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Título */
-.container h2 {
-    text-align: center;
-    font-size: 20px; /* Menor */
-    color: #333;
-    margin-bottom: 10px;
-}
-
-/* Formulário */
-#createUserForm div {
-    margin-bottom: 10px;
-}
-
-#createUserForm label {
-    display: block;
-    font-weight: bold;
-    color: #555;
-    font-size: 12px;
-    margin-bottom: 4px;
-}
-
-#createUserForm input, 
-#createUserForm select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 12px;
-}
-
-#createUserForm input:focus, 
-#createUserForm select:focus {
-    border-color: #007bff;
-    outline: none;
-}
-
-#createUserButton {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    font-size: 14px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#createUserButton:hover {
-    background-color: #0056b3;
-}
-
-
-#EditUserForm div {
-    margin-bottom: 10px;
-}
-
-#EditUserForm label {
-    display: block;
-    font-weight: bold;
-    color: #555;
-    font-size: 12px;
-    margin-bottom: 4px;
-}
-
-#EditUserForm input,
-#EditUserForm select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 12px;
-}
-
-    #EditUserForm input:focus,
-    #EditUserForm select:focus {
-        border-color: #28a745; /* Verde para destacar a edição */
-        outline: none;
-    }
-
-/* Botão de atualizar */
-#editUserButton {
-    width: 100%;
-    padding: 10px;
-    background-color: #28a745; /* Verde para edição */
-    color: #fff;
-    font-size: 14px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-    #editUserButton:hover {
-        background-color: #218838;
-    }
-
