@@ -25,10 +25,11 @@ public class AppDbContext : IdentityDbContext<Utilizador>
         base.OnModelCreating(builder);
         {
             builder.Entity<ReclamacaoSugestao>()
-                .HasOne(r => r.Utilizador)
-                .WithMany() // ou .WithMany(u => u.ReclamacoesSugestoes) se você tiver a propriedade de navegação em Utilizador
-                .HasForeignKey(r => r.UtilizadorId)
-                .OnDelete(DeleteBehavior.Restrict); // Configure conforme necessário
+            .HasOne(rs => rs.Utilizador)
+            .WithMany(u => u.ReclamacoesSugestoes)
+            .HasForeignKey(rs => rs.UtilizadorId)
+            .OnDelete(DeleteBehavior.Cascade);
+
         }
     }
 

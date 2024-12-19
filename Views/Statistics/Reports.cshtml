@@ -4,42 +4,43 @@
     ViewData["Title"] = "Relatórios";
 }
 
-<h2>@ViewData["Title"]</h2>
-
 <div class="container">
     <!-- Exibindo as estatísticas básicas -->
     <h3>Estatísticas Gerais</h3>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Descrição</th>
-                <th>Valor</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Total de Usuários</td>
-                <td>@Model.TotalUsers</td>
-            </tr>
-            <tr>
-                <td>Usuários Ativos</td>
-                <td>@Model.ActiveUsers</td>
-            </tr>
-            <tr>
-                <td>Usuários Inativos</td>
-                <td>@Model.InactiveUsers</td>
-            </tr>
-            <tr>
-                <td>Novos Registros</td>
-                <td>@Model.NewRegistrations</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <!-- Exemplo de gráfico, usando um plugin de gráficos (opcional) -->
-    <h3>Gráficos</h3>
-    <div>
-        <canvas id="userChart" width="400" height="200"></canvas>
+    <div class="table-chart-container">
+        <!-- Tabela -->
+        <div class="table-container">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Descrição</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Total de Usuários</td>
+                        <td>@Model.TotalUsers</td>
+                    </tr>
+                    <tr>
+                        <td>Usuários Ativos</td>
+                        <td>@Model.ActiveUsers</td>
+                    </tr>
+                    <tr>
+                        <td>Usuários Inativos</td>
+                        <td>@Model.InactiveUsers</td>
+                    </tr>
+                    <tr>
+                        <td>Novos Registros</td>
+                        <td>@Model.NewRegistrations</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Gráfico -->
+        <div class="chart-container">
+            <canvas id="userChart"></canvas>
+        </div>
     </div>
 </div>
 

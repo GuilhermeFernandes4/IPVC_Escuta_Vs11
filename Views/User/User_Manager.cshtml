@@ -29,7 +29,10 @@
             <tbody>
                 @foreach (var user in Model)
                 {
-                    <tr>
+                    var isActive = (User.Identity.Name == user.Email); // Verifica se o usuário logado corresponde ao usuário da linha
+                    var rowClass = isActive ? "active" : ""; // Define a classe de estilo "active" se o usuário estiver logado
+
+                    <tr class="@rowClass">
                         <td>@user.FirstName @user.LastName</td> <!-- Nome completo -->
                         <td>@user.Email</td>
                         <td>@user.Address</td>

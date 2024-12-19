@@ -6,5 +6,8 @@ namespace IPVC_Escuta_Vs11.ViewModels
     {
         public IEnumerable<ReclamacaoSugestao> ReclamacoesSugestoes { get; set; }
         public IEnumerable<Elogios> Elogios { get; set; }
+        public IEnumerable<ReclamacaoSugestao> Sugestoes { get; set; } // Nova propriedade
+           
+
     }
 }

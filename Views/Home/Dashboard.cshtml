@@ -30,14 +30,16 @@
             <div id="informacoes-gerais" class="content-section">
                 <h2>Informações Gerais</h2>
                 <p>Aqui você pode ver as reclamações, elogios e sugestões dos usuários. Clique nas opções do menu lateral para visualizar as seções específicas.</p>
-                <p>Reclamações, elogios e sugestões são importantes para melhorar a qualidade dos serviços prestados. Clique nas opções ao lado para visualizar as seções.</p>
+            </div>
 
-                <!-- Reclamações -->
-                <div id="reclamacoes-container" class="content-section" style="display: block;">
-                    <h3>Reclamações</h3>
-                    @foreach (var item in Model.ReclamacoesSugestoes)
+            <!-- Seção Reclamações -->
+            <div id="reclamacoes-container" class="content-section" style="display: block;" aria-hidden="false">
+                <h3>Reclamações</h3>
+                @if (Model.ReclamacoesSugestoes?.Any() ?? false)
+                {
+                    foreach (var item in Model.ReclamacoesSugestoes)
                     {
-                        <div class="card mb-3">
+                        <div class="card mb-3" style="max-width: 800px; margin: auto;">
                             <div class="card-body">
                                 <p><strong>Motivo:</strong> @item.Motivo</p>
                                 <p><strong>Descrição:</strong> @item.DescricaoRec</p>
@@ -46,61 +48,86 @@
                             </div>
                         </div>
                     }
-                </div>
+                }
+                else
+                {
+                    <p>Não há reclamações registradas no momento.</p>
+                }
+            </div>
 
-                <!-- Elogios -->
-                <div id="elogios-container" class="content-section" style="display: none;">
-                    <h3>Elogios</h3>
-                    @foreach (var elogio in Model.Elogios)
+            <!-- Seção Elogios -->
+            <div id="elogios-container" class="content-section" style="display: none;" aria-hidden="true">
+                <h3>Elogios</h3>
+                @if (Model.Elogios?.Any() ?? false)
+                {
+                    foreach (var elogio in Model.Elogios)
                     {
-                        <div class="card mb-3">
+                        <div class="card mb-3" style="max-width: 800px; margin: auto;">
                             <div class="card-body">
                                 <p><strong>Email/Nome:</strong> @elogio.Email</p>
                                 <p><strong>Opinião:</strong> @elogio.Opiniao</p>
                                 <p>
                                     <strong>Avaliação:</strong>
-                                    @for (int i = 0; i < elogio.Avaliacao; i++)
-                                    {
-                                        <span>★</span>
-                                    }
+                                    <span>
+                                        @for (int i = 0; i < elogio.Avaliacao; i++)
+                                        {
+                                            <span>&#9733;</span> <!-- Símbolo de estrela -->
+                                        }
+                                    </span>
                                 </p>
                                 <p><strong>Tipo de Visualização:</strong> @elogio.TipoVisualizacao.ToString("G")</p>
                             </div>
                         </div>
                     }
-                </div>
+                }
+                else
+                {
+                    <p>Não há elogios registrados no momento.</p>
+                }
+            </div>
 
-                <!-- Sugestões -->
-                <div id="sugestoes-container" class="content-section" style="display: none;">
-                    <h3>Sugestões</h3>
+            <!-- Seção Sugestões -->
+            <div id="sugestoes-container" class="content-section" style="display: none;" aria-hidden="true">
+                <h3>Sugestões</h3>
+                @if (Model.Sugestoes?.Any() ?? false)
+                {
+                    foreach (var item in Model.Sugestoes)
+                    {
+                        <div class="card mb-3" style="max-width: 800px; margin: auto;">
+                            <div class="card-body">
+                                <p><strong>Motivo:</strong> @item.Motivo</p>
+                                <p><strong>Descrição:</strong> @item.DescricaoRec</p>
+                                <p><strong>Categoria:</strong> @item.Categoria.ToString("G")</p>
+                                <p><strong>Escola:</strong> @item.Escola</p>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
                     <p>Não há sugestões registradas no momento.</p>
-                </div>
+                }
             </div>
         </main>
-
     </div>
 </div>
 
 <!-- Scripts para controle de visibilidade -->
 <script>
-    // Mostrar Reclamações
-    document.getElementById("mostrar-reclamacoes").onclick = function() {
-        document.getElementById("reclamacoes-container").style.display = "block";
-        document.getElementById("elogios-container").style.display = "none";
-        document.getElementById("sugestoes-container").style.display = "none";
+    const sections = {
+        reclamacoes: document.getElementById("reclamacoes-container"),
+        elogios: document.getElementById("elogios-container"),
+        sugestoes: document.getElementById("sugestoes-container")
     };
 
-    // Mostrar Elogios
-    document.getElementById("mostrar-elogios").onclick = function() {
-        document.getElementById("reclamacoes-container").style.display = "none";
-        document.getElementById("elogios-container").style.display = "block";
-        document.getElementById("sugestoes-container").style.display = "none";
-    };
+    document.getElementById("mostrar-reclamacoes").onclick = () => toggleSection("reclamacoes");
+    document.getElementById("mostrar-elogios").onclick = () => toggleSection("elogios");
+    document.getElementById("mostrar-sugestoes").onclick = () => toggleSection("sugestoes");
 
-    // Mostrar Sugestões
-    document.getElementById("mostrar-sugestoes").onclick = function() {
-        document.getElementById("reclamacoes-container").style.display = "none";
-        document.getElementById("elogios-container").style.display = "none";
-        document.getElementById("sugestoes-container").style.display = "block";
-    };
+    function toggleSection(section) {
+        for (const key in sections) {
+            sections[key].style.display = key === section ? "block" : "none";
+            sections[key].setAttribute("aria-hidden", key !== section);
+        }
+    }
 </script>

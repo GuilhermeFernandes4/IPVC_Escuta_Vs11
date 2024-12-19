@@ -3,7 +3,7 @@
     public enum TipoFormulario
     {
         Sugestao = 1,
-        Reclamacao = 2
+        Reclamacao = 0
     }
 }
 

@@ -35,10 +35,8 @@ namespace IPVC_Escuta_Vs11.Controllers
         [HttpGet]
         public IActionResult CreateUser()
         {
-            
             return View();
         }
-        
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -46,25 +44,20 @@ namespace IPVC_Escuta_Vs11.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new Utilizador() { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, Address = model.Address};
-                // Cria o utilizador na base de dados
+                var user = new Utilizador() { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, Address = model.Address };
                 var result = await _userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
                 {
-                    // Adicionar a Role ao utilizador
                     if (!string.IsNullOrEmpty(model.Role))
                     {
                         await _userManager.AddToRoleAsync(user, model.Role);
                     }
-                    
 
-                    // Redireciona para a página de gestão de utilizadores
                     return RedirectToAction("User_Manager");
                 }
                 else
                 {
-                    // Registra erros no ModelState
                     foreach (var error in result.Errors)
                     {
                         ModelState.AddModelError("", error.Description);
@@ -74,7 +67,6 @@ namespace IPVC_Escuta_Vs11.Controllers
 
             return View(model);
         }
-
 
         // Método para editar utilizador (GET)
         [HttpGet]
@@ -92,16 +84,12 @@ namespace IPVC_Escuta_Vs11.Controllers
             }
 
             var userID = user.Id.ToString();
-
             var roleID = await dbContext.UserRoles.Where(ur => ur.UserId == userID).Select(ur => ur.RoleId).FirstOrDefaultAsync();
-
             var role = await dbContext.Roles.FindAsync(roleID);
-
             var roleName = await _roleManager.GetRoleNameAsync(role);
 
-            var model = new EditUserAdminViewModel() { Address = user.Address, Email = user.Email, FirstName = user.FirstName, LastName = user.LastName, Role = roleName , Id = user.Id};
-        
-            return View(model);  // Reutiliza a view de criação para editar
+            var model = new EditUserAdminViewModel() { Address = user.Address, Email = user.Email, FirstName = user.FirstName, LastName = user.LastName, Role = roleName, Id = user.Id };
+            return View(model);
         }
 
         // Método para editar utilizador (POST)
@@ -111,7 +99,6 @@ namespace IPVC_Escuta_Vs11.Controllers
             if (ModelState.IsValid)
             {
                 var existingUser = await _userManager.FindByIdAsync(edit.Id.ToString());
-
                 if (existingUser == null)
                 {
                     return NotFound();
@@ -123,7 +110,12 @@ namespace IPVC_Escuta_Vs11.Controllers
                 existingUser.Email = edit.Email;
                 existingUser.Address = edit.Address;
 
-                
+                // Verifica se o usuário logado é ativo
+                if (!existingUser.IsActive)
+                {
+                    ModelState.AddModelError("", "O usuário não está ativo.");
+                    return View(edit);
+                }
 
                 // Atualiza a Role, se necessário
                 var currentRoles = await _userManager.GetRolesAsync(existingUser);
@@ -145,10 +137,9 @@ namespace IPVC_Escuta_Vs11.Controllers
                 }
 
                 var updateResult = await _userManager.UpdateAsync(existingUser);
-
                 if (updateResult.Succeeded)
                 {
-                    return RedirectToAction("User_Manager"); // Após a edição, redireciona para a lista
+                    return RedirectToAction("User_Manager");
                 }
                 else
                 {
@@ -160,9 +151,8 @@ namespace IPVC_Escuta_Vs11.Controllers
             }
 
             ViewBag.Roles = new[] { "Aluno", "Funcionario", "Professor" };
-            return View(); // Caso falhe, retorna à mesma view
+            return View(edit);
         }
-
 
         public async Task<IActionResult> DeleteUser(string id)
         {
@@ -170,25 +160,36 @@ namespace IPVC_Escuta_Vs11.Controllers
 
             if (user != null)
             {
-                // Get the roles assigned to the user
-                var userRoles = await _userManager.GetRolesAsync(user);
-
-                // Check if the user is in the "Admin" role
-                if (userRoles.Contains("Admin"))
+                // Verifica se há registros associados na tabela ReclamacoesSugestoes
+                var hasRelatedEntries = await dbContext.ReclamacoesSugestoes.AnyAsync(r => r.UtilizadorId == user.Id);
+                if (hasRelatedEntries)
                 {
-
                     return RedirectToAction("User_Manager");
                 }
 
-                // Proceed with deletion if the user is not in the "Admin" role
+                // Verifica se o usuário logado é o mesmo que está sendo excluído
+                if (User.Identity.Name == user.UserName)
+                {
+                    ModelState.AddModelError("", "Não é permitido excluir sua própria conta.");
+                    return RedirectToAction("User_Manager");
+                }
+
+                // Verifica se o usuário tem uma role de administrador
+                var roles = await _userManager.GetRolesAsync(user);
+                if (roles.Contains("Admin"))
+                {
+                    ModelState.AddModelError("", "Os administradores não podem excluir suas próprias contas.");
+                    return RedirectToAction("User_Manager");
+                }
+
+                // Remove o usuário se não tiver registros associados
                 var result = await _userManager.DeleteAsync(user);
                 if (result.Succeeded)
-                { 
+                {
                     return RedirectToAction("User_Manager");
                 }
                 else
                 {
-                    // Handle errors during deletion
                     foreach (var error in result.Errors)
                     {
                         ModelState.AddModelError("", error.Description);
@@ -196,10 +197,8 @@ namespace IPVC_Escuta_Vs11.Controllers
                 }
             }
 
-
             return RedirectToAction("User_Manager");
         }
-
 
         // Método para listar todos os usuários na página de gestão de usuários
         [HttpGet]

@@ -31,23 +31,35 @@
         font-size: 1.2rem;
     }
 
-    .PagInicial .carousel-item img {
-        height: 300px; /* Ajusta o tamanho da imagem do carrossel em dispositivos móveis */
-    }
 
-    .PagInicial .card-index {
-        width: 100%;
-    }
+  
 
     .PagInicial .container-fluid {
         padding-left: 15px;
         padding-right: 15px;
     }
 
-    .container {
-        padding: 15px;
+    .SobreProjeto .container-fluid {
+        padding-left: 15px;
+        padding-right: 15px;
     }
-       
+
+    .SobreProjeto .header h1 {
+        font-size: 1.6rem;
+    }
+
+    .SobreProjeto .header p {
+        font-size: 0.9rem;
+    }
+
+    .SobreProjeto .scrollspy-example h4 {
+        font-size: 1.5rem;
+    }
+
+    .SobreProjeto .scrollspy-example p,
+    .SobreProjeto .scrollspy-example ul li {
+        font-size: 1rem;
+    }
     
 }
 
@@ -66,7 +78,7 @@ html {
 header {
     background-color: #007bff;
     color: white;
-    padding: 20px 0;
+    padding: 5px 0;
     text-align: center;
 }
 
@@ -87,10 +99,23 @@ footer {
     background-color: #f4f4f4; /* Cor de fundo suave para o rodapé */
     text-align: center; /* Centraliza o texto dentro do rodapé */
     width: 100%; /* Garante que o rodapé ocupe toda a largura da página */
-    padding: 20px; /* Espaçamento interno no rodapé */
+
     position: relative;
-    bottom: 0;
+
 }
+
+
+.img-container {
+    height: 500px; /* Altura fixa para o contêiner do carrossel */
+    overflow: hidden; /* Impede que imagens maiores "vazem" */
+    background-color: #000; /* Fundo para barras ao redor (opcional) */
+}
+
+    .img-container img {
+        object-fit: contain; /* Mostra a imagem inteira sem distorção */
+        width: 60%; /* Preenche a largura do contêiner */
+        height: 100%; /* Preenche a altura do contêiner */
+    }
 
 
 /*-------------------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -103,11 +128,19 @@ h1-aluno, p-aluno, h1-funcionario, p-funcionario, h1-professor, p-professor, h1-
     width: fit-content; /* Ajusta o tamanho do elemento conforme o conteúdo */
 }
 
+h2_cor {
+    color: #38a0f5;
+}
+
 /* Estilo para títulos gerais */
 h1, h2, h3 {
     color: #333; /* Cor escura para os títulos */
     margin-bottom: 20px; /* Espaçamento inferior nos títulos */
     font-size: 24px; /* Define o tamanho da fonte dos títulos */
+}
+
+h5{
+    background: 
 }
 
 /* Estilos de Botões e Foco */
@@ -162,14 +195,17 @@ h1, h2, h3 {
     width: 100%; /* Garante que o cartão ocupe 100% da largura disponível */
     max-width: 400px; /* Tamanho máximo ajustado para telas pequenas */
     text-align: center; /* Alinha o conteúdo do cartão ao centro */
-    margin: 50px auto; /* Centraliza o cartão na tela */
 }
+    
 
     .card h2 {
         font-size: 28px; /* Define o tamanho da fonte do título dentro do cartão */
         color: #333; /* Cor do título */
     }
 
+.btn {
+    background: #38a0f5;
+}
 /* Estilos de Campos de Formulário */
 .form-control {
     border-radius: 5px; /* Borda arredondada nos campos de formulário */
@@ -297,12 +333,11 @@ nav {
         font-size: 0.9em; /* Tamanho do texto para os links */
     }
 
-
-/* Estilo para o cabeçalho */
+/*---------------------------------------------------------------------------------------------------------------------------------------------*/
+/* Página Sobre - Estilo para o cabeçalho */
 .header-sobre {
     background-color: #1683f0;
     color: white;
-    padding: 20px;
     text-align: center;
     font-family: 'Arial', sans-serif;
 }
@@ -342,6 +377,7 @@ nav {
 
 /* Estilo geral do container */
 .container {
+    margin-top: 50px;
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: #333;
@@ -399,9 +435,6 @@ nav {
     }
 
 
-
-
-
     .header h1 {
         font-size: 36px;
         font-weight: bold;
@@ -443,6 +476,7 @@ nav {
         padding-left: 20px;
     }
 
+/*-------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 /* Estilo para o container principal da Página Inicial */
 .PagInicial {
@@ -454,12 +488,15 @@ nav {
 /* Estilo para o Carrossel */
 #carouselExampleIndicators {
     margin-bottom: 30px; /* Espaçamento abaixo do carrossel */
+    max-width: 90%; /* Ajuste para reduzir a largura do carrossel */
+    margin-left: auto; /* Centralizar horizontalmente */
+    margin-right: auto; /* Centralizar horizontalmente */
 }
 
 .PagInicial .carousel-item img {
-    object-fit: cover;
+    object-fit: contain;
     height: 500px; /* Tamanho fixo para as imagens do carrossel */
-    border-radius: 10px;
+    
 }
 
 /* Estilo para os controles do carrossel */
@@ -474,6 +511,7 @@ nav {
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     color: #333;
+    text-align: center; /* Centralizar o texto */
 }
 
 .PagInicial .custom-font-text {
@@ -497,8 +535,8 @@ nav {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 10px; /* Bordas arredondadas */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    margin-bottom: 20px;
     height: 100%;
+    width: 100%;
 }
 
     .PagInicial .card-index:hover {
@@ -532,10 +570,8 @@ nav {
 
 
 
-
-
-
-/* Estilo para o container principal da página Sobre Projeto */
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* Estilo para o container principal - Página Sobre Projeto */
 .SobreProjeto {
     max-width: 1200px;
     margin: 0 auto;
@@ -635,39 +671,10 @@ nav {
     padding-right: 30px;
 }
 
-/* Estilo para a responsividade */
-@media (max-width: 768px) {
-    .SobreProjeto .container-fluid {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
+/*-------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*Página Reclamacoes/Sugestoes */
 
-    .SobreProjeto .header h1 {
-        font-size: 1.6rem;
-    }
 
-    .SobreProjeto .header p {
-        font-size: 0.9rem;
-    }
-
-    .SobreProjeto .scrollspy-example h4 {
-        font-size: 1.5rem;
-    }
-
-    .SobreProjeto .scrollspy-example p,
-    .SobreProjeto .scrollspy-example ul li {
-        font-size: 1rem;
-    }
-}
-
-.scrollable-container {
-    max-height: 500px;
-    overflow-y: auto;
-    border: 1px solid #ddd;
-    padding: 10px;
-    background-color: #f5f5f5;
-    margin-bottom: 20px;
-}
 
 .reclamacao-container, .elogio-container {
     border: 1px solid #ccc;
@@ -685,6 +692,9 @@ nav {
     .reclamacao-container strong, .elogio-container strong {
         color: #333;
     }
+
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*Página Perfil - Account*/
 
 .profile-container {
     max-width: 800px;
@@ -777,6 +787,7 @@ nav {
         background-color: #5a6268;
     }
 
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 /* Estilo geral do contêiner específico */
 .containerCreateElogioP {
@@ -873,6 +884,7 @@ nav {
         opacity: 0.7;
     }
 
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 /* Estilo geral do contêiner específico */
 .containerCreateElogioF {
@@ -969,100 +981,10 @@ nav {
         opacity: 0.7;
     }
 
-/* Estilo geral do contêiner específico */
-.containerCreateElogioP {
-    max-width: 500px; /* Reduz a largura */
-    margin: 0 auto;
-    padding: 15px; /* Reduz o espaçamento interno */
-    background-color: #f4f8fc; /* Azul claro */
-    border-radius: 8px; /* Bordas levemente arredondadas */
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-    font-family: 'Arial', sans-serif;
-}
 
-    /* Título */
-    .containerCreateElogioP h1 {
-        text-align: center;
-        font-size: 22px; /* Reduz o tamanho do título */
-        color: #2c3e50; /* Azul escuro */
-        margin-bottom: 15px; /* Menor espaçamento */
-    }
 
-    /* Estilo das labels */
-    .containerCreateElogioP .form-group label {
-        font-weight: bold;
-        color: #34495e; /* Cinza escuro */
-        display: block;
-        margin-bottom: 5px; /* Menor espaçamento */
-        font-size: 14px; /* Reduz o tamanho da fonte */
-    }
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-    /* Campos de entrada */
-    .containerCreateElogioP .form-control {
-        width: 100%;
-        padding: 8px; /* Reduz o padding */
-        font-size: 14px; /* Fonte menor */
-        color: #2c3e50;
-        border: 1px solid #ced6e0;
-        border-radius: 4px;
-        box-sizing: border-box;
-        transition: all 0.3s ease-in-out;
-    }
-
-        .containerCreateElogioP .form-control:focus {
-            border-color: #1e90ff;
-            outline: none;
-            box-shadow: 0 0 4px rgba(30, 144, 255, 0.3); /* Sombra menor */
-        }
-
-    /* Botões */
-    .containerCreateElogioP button[type="submit"],
-    .containerCreateElogioP button[type="reset"] {
-        padding: 8px 15px; /* Botões mais compactos */
-        font-size: 13px; /* Reduz tamanho da fonte */
-        font-weight: bold;
-        color: #fff;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-
-    .containerCreateElogioP button[type="submit"] {
-        background-color: #3498db; /* Azul */
-    }
-
-        .containerCreateElogioP button[type="submit"]:hover {
-            background-color: #2980b9; /* Azul mais escuro */
-        }
-
-    .containerCreateElogioP button[type="reset"] {
-        background-color: #95a5a6; /* Cinza */
-    }
-
-        .containerCreateElogioP button[type="reset"]:hover {
-            background-color: #7f8c8d; /* Cinza mais escuro */
-        }
-
-    /* Mensagens de erro */
-    .containerCreateElogioP .text-danger {
-        color: #e74c3c; /* Vermelho */
-        font-size: 12px; /* Fonte menor */
-        margin-top: 3px; /* Espaçamento menor */
-        display: block;
-    }
-
-    /* Espaçamento entre os campos */
-    .containerCreateElogioP .form-group {
-        margin-bottom: 12px; /* Menor espaçamento entre grupos */
-    }
-
-    /* Estilo para o botão "Criar" durante o clique */
-    .containerCreateElogioP button[disabled] {
-        background-color: #95a5a6;
-        cursor: not-allowed;
-        opacity: 0.7;
-    }
 
 /* Estilo geral do contêiner específico */
 .containerCreateElogio {
@@ -1158,8 +1080,7 @@ nav {
         cursor: not-allowed;
         opacity: 0.7;
     }
-
-
+/*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 /* Estilo geral do contêiner específico */
 .containerCreateSugestaoReclamacao {
@@ -1282,6 +1203,8 @@ nav {
         resize: vertical;
     }
 
+
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /* Estilo geral do contêiner específico */
 .containerCreateSugestaoReclamacaoF {
     max-width: 900px; /* Aumenta a largura do container */
@@ -1401,6 +1324,8 @@ nav {
         resize: vertical;
     }
 
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /* Estilo geral do contêiner específico */
 .containerCreateSugestaoReclamacaoP {
     max-width: 900px; /* Aumenta a largura do container */
@@ -1521,6 +1446,9 @@ nav {
     }
 
 
+
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
 /*Para garantir que todos os elemnetos dentro do row tem a mesma altura (+ definir heigth:100% nos elementos)*/
                                                                                                            /**/
 .row-equal {                                                                                               /**/
@@ -1562,10 +1490,6 @@ nav {
     }
 
 
-
-
-
-<style >
 /* Resetando estilo padrão */
 * {
     margin: 0;
@@ -1573,9 +1497,6 @@ nav {
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
-
-
-
 
 
 /* Layout */
@@ -1645,4 +1566,255 @@ p {
         background-color: #0056b3;
     }
 
-</style >
+
+/* Flex container para tabela e gráfico */
+.table-chart-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Tabela */
+.table-container {
+    flex: 1;
+    min-width: 350px;
+    max-width: 400px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+}
+
+.table {
+    border: 1px solid #dee2e6;
+}
+
+    .table th, .table td {
+        padding: 10px;
+        text-align: left;
+        border: 1px solid #dee2e6;
+        font-size: 14px;
+    }
+
+    .table th {
+        background-color: #007bff;
+        color: #ffffff;
+        text-align: center;
+    }
+
+    .table td {
+        background-color: #f8f9fa;
+        color: #495057;
+        text-align: center;
+    }
+
+    .table tr:nth-child(even) td {
+        background-color: #e9ecef;
+    }
+
+/* Gráfico */
+.chart-container {
+    flex: 1;
+    min-width: 350px;
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+canvas {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .table-chart-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .table-container, .chart-container {
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+    table th, table td {
+        font-size: 12px;
+        padding: 8px;
+    }
+}
+
+/* Formulário */
+#createUserForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+    /* Labels */
+    #createUserForm label {
+        font-size: 14px;
+        color: #495057;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    /* Campos de entrada */
+    #createUserForm input,
+    #createUserForm select {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+        #createUserForm input:focus,
+        #createUserForm select:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
+        }
+
+/* Botão de submissão */
+#createUserButton {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    #createUserButton:hover {
+        background-color: #0056b3;
+    }
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+
+        .container h2 {
+            font-size: 20px;
+        }
+
+    #createUserForm label {
+        font-size: 13px;
+    }
+
+    #createUserForm input,
+    #createUserForm select {
+        font-size: 13px;
+    }
+
+    #createUserButton {
+        font-size: 14px;
+    }
+}
+
+/* Container para o formulário */
+#EditUserForm {
+    max-width: 500px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px 30px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+    /* Cabeçalho */
+    #EditUserForm h2 {
+        color: #343a40;
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+
+    /* Labels */
+    #EditUserForm label {
+        font-size: 14px;
+        color: #495057;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    /* Campos de entrada */
+    #EditUserForm input,
+    #EditUserForm select {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+        #EditUserForm input:focus,
+        #EditUserForm select:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
+        }
+
+/* Botão de submissão */
+#editUserButton {
+    background-color: #28a745;
+    color: #ffffff;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    #editUserButton:hover {
+        background-color: #218838;
+    }
+
+/* Espaçamento entre campos */
+#EditUserForm > div {
+    margin-bottom: 15px;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    #EditUserForm {
+        padding: 15px;
+    }
+
+        #EditUserForm h2 {
+            font-size: 20px;
+        }
+
+        #EditUserForm label {
+            font-size: 13px;
+        }
+
+        #EditUserForm input,
+        #EditUserForm select {
+            font-size: 13px;
+        }
+
+    #editUserButton {
+        font-size: 14px;
+    }
+}
+
+.image-cover {
+    width: 100%; /* Define a largura do contêiner */
+    height: 100%; /* Define a altura do contêiner */
+    object-fit: cover; /* Corta a imagem para preencher mantendo as proporções */
+    object-position: center; /* Centraliza a imagem no contêiner */
+}

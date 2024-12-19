@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using IPVC_Escuta_Vs11.ViewModels;
+using IPVC_Escuta_Vs11.Enums;
 
 namespace IPVC_Escuta_Vs11.Controllers
 {
@@ -28,42 +29,26 @@ namespace IPVC_Escuta_Vs11.Controllers
         // Página do Dashboard - Agora com dados das reclamações, sugestões e elogios
         public async Task<IActionResult> Dashboard()
         {
-            // Busca os dados de reclamações e sugestões
-            var reclamacoesSugestoes = await _context.ReclamacoesSugestoes
-                .Select(r => new ReclamacaoSugestao
-                {
-                    Data = r.Data,                  // Data da reclamação
-                    Hora = r.Hora,                  // Hora da reclamação
-                    Motivo = r.Motivo,              // Motivo da reclamação
-                    DescricaoRec = r.DescricaoRec,  // Descrição da reclamação
-                    Categoria = r.Categoria,        // Categoria da reclamação
-                    Escola = r.Escola               // Escola associada à reclamação
-                })
-                .ToListAsync(); // Execute a consulta de forma assíncrona
+            var reclamacoes = await _context.ReclamacoesSugestoes
+            .Where(r => r.TipoFormulario == TipoFormulario.Reclamacao)
+            .ToListAsync();
 
-            // Busca os dados dos elogios
-            var elogios = await _context.Elogios
-                .Select(e => new Elogios
-                {
-                    Email = e.Email,                // Email do elogio
-                    Opiniao = e.Opiniao,            // Opinião do elogio
-                    Avaliacao = e.Avaliacao,        // Avaliação do elogio
-                    TipoVisualizacao = e.TipoVisualizacao, // Tipo de visualização do elogio
-                    IDReclamacaoSugestao = e.IDReclamacaoSugestao, // Relacionamento com reclamação/sugestão
-                    UtilizadorId = e.UtilizadorId   // Id do usuário (se disponível)
-                })
+            var sugestoes = await _context.ReclamacoesSugestoes
+                .Where(r => r.TipoFormulario == TipoFormulario.Sugestao)
                 .ToListAsync();
 
-            // Cria o ViewModel combinando ambos os dados
+            var elogios = await _context.Elogios.ToListAsync();
+
             var viewModel = new DashboardViewModel
             {
-                ReclamacoesSugestoes = reclamacoesSugestoes,
+                ReclamacoesSugestoes = reclamacoes, // Apenas reclamações
+                Sugestoes = sugestoes,             // Sugestões separadas
                 Elogios = elogios
             };
 
-            // Retorna os dados para a View
             return View(viewModel);
         }
+
 
         // Página de sugestões
         public IActionResult Sugestions()

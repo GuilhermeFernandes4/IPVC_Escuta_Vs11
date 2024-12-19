@@ -6,45 +6,58 @@
 <!-- Container principal com a classe PagInicial -->
 <div class="PagInicial">
 
-    <!-- Carousel -->
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="/Imagens/estg.jpg" alt="Imagem da ESTG">
+    <!-- Carousel ajustado para a largura do texto -->
+    <div class="d-flex justify-content-center my-4">
+        <div id="carouselExampleIndicators" class="carousel slide" style="width: 700px;" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="/Imagens/ESTG (1).jpg" alt="Imagem da ESTG 1">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="d-flex justify-content-center align-items-center" style="height: 300px; background-color: #f8f9fa;">
+                        <img class="img-fluid image-cover" src="/Imagens/estg.jpg" alt="Imagem da ESTG">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center align-items-center" style="height: 300px; background-color: #f8f9fa;">
+                        <img class="img-fluid image-cover" src="/Imagens/ESTG (1).jpg" alt="Imagem da ESTG 1">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center align-items-center" style="height: 300px; background-color: #f8f9fa;">
+                        <img class="img-fluid image-cover" src="/Imagens/teste4.png" alt="Imagem ilustrativa">
+                    </div>
+                </div>
             </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="/Imagens/images.jpeg" alt="Imagem ilustrativa">
-            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Próximo</span>
+            </button>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Próximo</span>
-        </a>
+    </div>
+
+    <!-- Texto de boas-vindas centralizado -->
+    <div class="container text-center my-4">
+        <div class="p-2 mb-4 bg-body-tertiary rounded-3">
+            <h1 class="display-5 fw-bold custom-font-welcome">Bem-vindo ao IPVC-Escuta.</h1>
+            <p class="fs-4 custom-font-text">
+                O sistema de partilha de Recomendações e Sugestões que é ótimo para a gestão do dia a dia da sua Instituição.
+                Para ter acesso a informações exclusivas desse sistema, você terá que fazer seu login ou registro.
+            </p>
+        </div>
     </div>
 
     <!-- Main Content -->
     <div class="container my-2">
-        <!-- Welcome Section -->
-        <div class="p-2 mb-4 bg-body-tertiary rounded-3">
-            <div class="container-fluid py-5">
-                <h1 class="display-5 fw-bold custom-font-welcome">Bem vindo ao IPVC-Escuta.</h1>
-                <p class="col-12 fs-4 custom-font-text">O sistema de partilha de Recomendações e Sugestões que é ótimo para a gestão do dia a dia da sua Instituição. Para ter acesso a informações exclusivas desse sistema, você terá que fazer seu login ou registro.</p>
-            </div>
-        </div>
-    </div>
-    <br>
-
-    <!-- Seção de Serviços -->
-    <div class="container text-center mb-5">
-        <div class="row row-equal row-spacing">
-            <h2 style="margin-bottom: 30px;">Serviços</h2>
+        <!-- Seção de Serviços -->
+        <div class="text-center mb-5">
+            <h2 style="margin-bottom: 20px;">Serviços</h2>
             <div class="row row-equal row-spacing">
                 <div class="col-md-4">
                     <div class="card card-index" style="width: 18rem;">

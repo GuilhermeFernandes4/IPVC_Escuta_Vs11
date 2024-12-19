@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
+using System.Linq;
 
 public class StatisticsController : Controller
 {
@@ -20,6 +22,16 @@ public class StatisticsController : Controller
         var activeUsers = await _userManager.Users.CountAsync(u => u.IsActive);
         var inactiveUsers = totalUsers - activeUsers;
         var newRegistrations = await _userManager.Users.CountAsync(u => u.Regist_Date > DateTime.Now.AddMonths(-1));
+
+        // Verifica se o utilizador logado está ativo
+        var loggedInUser = await _userManager.GetUserAsync(User);
+        var loggedInUserActive = loggedInUser != null && loggedInUser.IsActive;
+
+        // Atualiza a contagem de usuários ativos para incluir o usuário logado se ele estiver ativo
+        if (loggedInUserActive)
+        {
+            activeUsers++;
+        }
 
         var reportData = new
         {
