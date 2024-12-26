@@ -76,7 +76,7 @@ html {
 
 /* Cabeçalho */
 header {
-    background-color: #007bff;
+    
     color: white;
     padding: 5px 0;
     text-align: center;
@@ -203,9 +203,7 @@ h5{
         color: #333; /* Cor do título */
     }
 
-.btn {
-    background: #38a0f5;
-}
+
 /* Estilos de Campos de Formulário */
 .form-control {
     border-radius: 5px; /* Borda arredondada nos campos de formulário */
@@ -501,7 +499,7 @@ nav {
 /* Estilo para os controles do carrossel */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    background-color: #007BFF; /* Cor azul para os ícones de navegação */
+    
     border-radius: 50%;
 }
 
@@ -579,7 +577,7 @@ nav {
 
 /* Estilo para o cabeçalho */
 .SobreProjeto .header {
-    background-color: #007BFF;
+
     color: white;
     padding: 20px; /* Diminuído para reduzir a altura do cabeçalho */
     text-align: center;
@@ -613,12 +611,12 @@ nav {
 }
 
 .SobreProjeto .list-group-item:hover {
-    background-color: #007BFF;
+    
     color: white;
 }
 
 .SobreProjeto .list-group-item.active {
-    background-color: #007BFF;
+    
     color: white;
 }
 
@@ -722,7 +720,7 @@ nav {
         font-size: 1rem;
         text-decoration: none;
         color: white;
-        background-color: #007bff;
+
         border: none;
         border-radius: 5px;
         transition: background-color 0.3s;
@@ -1553,7 +1551,7 @@ p {
 .btn-toggle {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #007bff;
+    
     color: white;
     text-align: center;
     border: none;
