@@ -1,11 +1,13 @@
 ﻿@using IPVC_Escuta_Vs11.ViewModels
 @using IPVC_Escuta_Vs11.Models
-@using IPVC_Escuta_Vs11.Enums 
+@using IPVC_Escuta_Vs11.Enums
 @model List<IPVC_Escuta_Vs11.ViewModels.CreateSugestaoReclamacaoViewModel>
 
 @{
     ViewBag.Title = "Todas as Sugestões/Reclamações";
 }
+
+<a class="btn btn-outline-dark mb-3" asp-action="ProfessorDashboard" asp-controller="Professor">Voltar</a>
 
 <div class="container my-4">
     <h1 class="text-center mb-4">@ViewBag.Title</h1>

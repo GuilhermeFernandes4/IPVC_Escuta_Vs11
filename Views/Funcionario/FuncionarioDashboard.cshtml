@@ -9,42 +9,23 @@
     <p class="small">Aqui pode aceder às suas tarefas e funcionalidades específicas da função.</p>
 </div>
 
-<!-- Container do conteúdo do funcionário -->
-<div class="container my-4">
-    <div class="row row-cols-1 row-cols-md-3 g-3">
-
-        <!-- Card 1 - Dashboard -->
-        <div class="col">
-            <div class="card shadow-sm border-0" style="min-height: 150px;">
-                <div class="card-body text-center">
-                    <h6 class="card-title">Dashboard</h6>
-                    <p class="card-text small">Visualize comentários (Reclamações, Sugestões, Elogios).</p>
-                    <a class="btn" href="@Url.Action("Dashboard", "Home")" class="btn btn-primary btn-sm">Aceder</a>
-                </div>
-            </div>
+<div class="container-funcionario">
+    <div class="card-container-funcionario">
+        <div class="card">
+            <h2>Dashboard</h2>
+            <p>Aqui pode consultar diversos tipos de comentários, incluindo Reclamações, Sugestões e Elogios.</p>
+            <a class="btn" href="@Url.Action("Dashboard", "Home")">Aceder</a>
+        </div>
+        <div class="card a">
+            <h2>Comentários</h2>
+            <p>Aqui pode consultar diversos tipos de comentários, incluindo Reclamações, Sugestões e Elogios.</p>
+            <a class="btn" href="@Url.Action("CreateSugestaoReclamacaoF", "ReclamacoesSugestoes")">Aceder</a>
         </div>
 
-        <!-- Card 2 - Sugestões e Reclamação -->
-        <div class="col">
-            <div class="card shadow-sm border-0" style="min-height: 150px;">
-                <div class="card-body text-center">
-                    <h6 class="card-title">Sugestões e Reclamação</h6>
-                    <p class="card-text small">Partilhe sugestões sobre a Escola.</p>
-                    <a class="btn" href="@Url.Action("CreateSugestaoReclamacaoF", "ReclamacoesSugestoes")" class="btn btn-primary btn-sm">Aceder</a>
-                </div>
-            </div>
+        <div class="card">
+            <h2>Elogios</h2>
+            <p>Aqui pode consultar diversos opinioes acerca do IPVC ou outras Instituições do IPVC, incluindo Elogios.</p>
+                <a class="btn" href="@Url.Action("CreateElogioF", "Elogio")">Aceder</a>
         </div>
-
-        <!-- Card 3 - Elogios -->
-        <div class="col">
-            <div class="card shadow-sm border-0" style="min-height: 150px;">
-                <div class="card-body text-center">
-                    <h6 class="card-title">Elogios</h6>
-                    <p class="card-text small">Partilhe elogios e avaliações sobre a Escola.</p>
-                    <a class="btn" href="@Url.Action("CreateElogioF", "Elogio")" class="btn btn-primary btn-sm">Aceder</a>
-                </div>
-            </div>
-        </div>
-
     </div>
 </div>
