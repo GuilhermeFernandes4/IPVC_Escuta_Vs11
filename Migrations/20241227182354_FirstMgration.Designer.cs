@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IPVC_Escuta_Vs11.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241203153202_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20241227182354_FirstMgration")]
+    partial class FirstMgration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -211,14 +211,9 @@ namespace IPVC_Escuta_Vs11.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("UtilizadorId1")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("IDReclamacaoSugestao");
 
                     b.HasIndex("UtilizadorId");
-
-                    b.HasIndex("UtilizadorId1");
 
                     b.ToTable("ReclamacoesSugestoes");
                 });
@@ -517,14 +512,10 @@ namespace IPVC_Escuta_Vs11.Migrations
             modelBuilder.Entity("IPVC_Escuta_Vs11.Models.ReclamacaoSugestao", b =>
                 {
                     b.HasOne("IPVC_Escuta_Vs11.Models.Utilizador", "Utilizador")
-                        .WithMany()
-                        .HasForeignKey("UtilizadorId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("IPVC_Escuta_Vs11.Models.Utilizador", null)
                         .WithMany("ReclamacoesSugestoes")
-                        .HasForeignKey("UtilizadorId1");
+                        .HasForeignKey("UtilizadorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Utilizador");
                 });

@@ -94,17 +94,6 @@ body {
     font-size: 16px;
 }
 
-/* Estilo do rodapé */
-footer {
-    background-color: #f4f4f4; /* Cor de fundo suave para o rodapé */
-    text-align: center; /* Centraliza o texto dentro do rodapé */
-    width: 100%; /* Garante que o rodapé ocupe toda a largura da página */
-
-    position: relative;
-
-}
-
-
 .img-container {
     height: 500px; /* Altura fixa para o contêiner do carrossel */
     overflow: hidden; /* Impede que imagens maiores "vazem" */

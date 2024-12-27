@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace IPVC_Escuta_Vs11.Migrations
 {
     /// <inheritdoc />
-    public partial class FirstMigration : Migration
+    public partial class FirstMgration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -187,8 +187,7 @@ namespace IPVC_Escuta_Vs11.Migrations
                     DescricaoRec = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Categoria = table.Column<int>(type: "int", nullable: false),
                     Escola = table.Column<int>(type: "int", nullable: false),
-                    UtilizadorId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    UtilizadorId1 = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    UtilizadorId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -198,12 +197,7 @@ namespace IPVC_Escuta_Vs11.Migrations
                         column: x => x.UtilizadorId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_ReclamacoesSugestoes_AspNetUsers_UtilizadorId1",
-                        column: x => x.UtilizadorId1,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id");
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -394,11 +388,6 @@ namespace IPVC_Escuta_Vs11.Migrations
                 name: "IX_ReclamacoesSugestoes_UtilizadorId",
                 table: "ReclamacoesSugestoes",
                 column: "UtilizadorId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ReclamacoesSugestoes_UtilizadorId1",
-                table: "ReclamacoesSugestoes",
-                column: "UtilizadorId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RespostasR_ReclamacaoSugestaoIDReclamacaoSugestao",

@@ -208,14 +208,9 @@ namespace IPVC_Escuta_Vs11.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("UtilizadorId1")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("IDReclamacaoSugestao");
 
                     b.HasIndex("UtilizadorId");
-
-                    b.HasIndex("UtilizadorId1");
 
                     b.ToTable("ReclamacoesSugestoes");
                 });
@@ -514,14 +509,10 @@ namespace IPVC_Escuta_Vs11.Migrations
             modelBuilder.Entity("IPVC_Escuta_Vs11.Models.ReclamacaoSugestao", b =>
                 {
                     b.HasOne("IPVC_Escuta_Vs11.Models.Utilizador", "Utilizador")
-                        .WithMany()
-                        .HasForeignKey("UtilizadorId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("IPVC_Escuta_Vs11.Models.Utilizador", null)
                         .WithMany("ReclamacoesSugestoes")
-                        .HasForeignKey("UtilizadorId1");
+                        .HasForeignKey("UtilizadorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Utilizador");
                 });
