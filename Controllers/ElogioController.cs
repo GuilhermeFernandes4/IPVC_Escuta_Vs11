@@ -1,4 +1,5 @@
 ﻿using IPVC_Escuta_Vs11.Data;
+using IPVC_Escuta_Vs11.Enums;
 using IPVC_Escuta_Vs11.Models;
 using IPVC_Escuta_Vs11.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -19,8 +20,7 @@ namespace IPVC_Escuta_Vs11.Controllers
             this.dbContext = dbContext;
         }
 
-        // Métodos de criação de elogios para Aluno, Professor e Funcionario
-
+        // Métodos de criação de elogios para Aluno, Professor e Funcionário
         [HttpGet]
         [Authorize(Roles = "Aluno")]
         public IActionResult CreateElogio()
@@ -42,8 +42,7 @@ namespace IPVC_Escuta_Vs11.Controllers
             return View();
         }
 
-        // Métodos POST para criar um novo elogio
-
+        // Métodos POST para criar um novo elogio com tratamento de "Anônimo"
         [HttpPost]
         [Authorize(Roles = "Aluno")]
         public async Task<IActionResult> CreateElogio(CreateElogioViewModel model)
@@ -53,16 +52,16 @@ namespace IPVC_Escuta_Vs11.Controllers
                 return View(model);
             }
 
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Obter o ID do utilizador atual
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             var elogio = new Elogios
             {
-                Email = User.FindFirst(ClaimTypes.Email)?.Value,
+                Email = model.TipoVisualizacao == TipoVisualizacao.Privado ? "Anonimo" : User.FindFirst(ClaimTypes.Email)?.Value,
                 Opiniao = model.Opiniao,
                 Avaliacao = model.Avaliacao,
                 TipoVisualizacao = model.TipoVisualizacao,
                 IDReclamacaoSugestao = model.IDReclamacaoSugestao,
-                UtilizadorId = userId // Preencher o UtilizadorId
+                UtilizadorId = userId
             };
 
             await dbContext.Elogios.AddAsync(elogio);
@@ -80,16 +79,16 @@ namespace IPVC_Escuta_Vs11.Controllers
                 return View(model);
             }
 
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Obter o ID do utilizador
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             var elogio = new Elogios
             {
-                Email = User.FindFirst(ClaimTypes.Email)?.Value,
+                Email = model.TipoVisualizacao == TipoVisualizacao.Privado ? "Anonimo" : User.FindFirst(ClaimTypes.Email)?.Value,
                 Opiniao = model.Opiniao,
                 Avaliacao = model.Avaliacao,
                 TipoVisualizacao = model.TipoVisualizacao,
                 IDReclamacaoSugestao = model.IDReclamacaoSugestao,
-                UtilizadorId = userId // Defina o UtilizadorId corretamente
+                UtilizadorId = userId
             };
 
             await dbContext.Elogios.AddAsync(elogio);
@@ -107,29 +106,25 @@ namespace IPVC_Escuta_Vs11.Controllers
                 return View(model);
             }
 
-            // Obter o ID do utilizador (Funcionario) que está logado
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             var elogio = new Elogios
             {
-                Email = User.FindFirst(ClaimTypes.Email)?.Value, // Preencher o email automaticamente
+                Email = model.TipoVisualizacao == TipoVisualizacao.Privado ? "Anonimo" : User.FindFirst(ClaimTypes.Email)?.Value,
                 Opiniao = model.Opiniao,
                 Avaliacao = model.Avaliacao,
                 TipoVisualizacao = model.TipoVisualizacao,
                 IDReclamacaoSugestao = model.IDReclamacaoSugestao,
-                UtilizadorId = userId // Preencher o UtilizadorId com o ID do funcionário logado
+                UtilizadorId = userId
             };
 
-            // Adicionar o elogio ao banco de dados e salvar as alterações
             await dbContext.Elogios.AddAsync(elogio);
             await dbContext.SaveChangesAsync();
 
-            // Redirecionar para a lista de elogios para funcionários
             return RedirectToAction("ListElogioF");
         }
 
-        // Métodos para listar os elogios de cada tipo de usuário
-
+        // Métodos para listar os elogios com ajuste para "Anônimo"
         [Authorize(Roles = "Aluno")]
         public async Task<IActionResult> ListElogio()
         {
@@ -142,7 +137,7 @@ namespace IPVC_Escuta_Vs11.Controllers
             var viewModelList = elogios.Select(e => new CreateElogioViewModel
             {
                 Id = e.Id,
-                Email = e.Email,
+                Email = e.TipoVisualizacao == TipoVisualizacao.Privado ? "Anonimo" : e.Email,
                 Opiniao = e.Opiniao,
                 Avaliacao = e.Avaliacao,
                 TipoVisualizacao = e.TipoVisualizacao,
@@ -164,7 +159,7 @@ namespace IPVC_Escuta_Vs11.Controllers
             var viewModelList = elogios.Select(e => new CreateElogioViewModel
             {
                 Id = e.Id,
-                Email = e.Email,
+                Email = e.TipoVisualizacao == TipoVisualizacao.Privado ? "Anonimo" : e.Email,
                 Opiniao = e.Opiniao,
                 Avaliacao = e.Avaliacao,
                 TipoVisualizacao = e.TipoVisualizacao,
@@ -174,20 +169,19 @@ namespace IPVC_Escuta_Vs11.Controllers
             return View(viewModelList);
         }
 
-        [HttpGet]
         [Authorize(Roles = "Funcionario")]
         public async Task<IActionResult> ListElogioF()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             var elogios = await dbContext.Elogios
-                .Where(e => e.UtilizadorId == userId) // Filtra pelos elogios do funcionário logado
+                .Where(e => e.UtilizadorId == userId)
                 .ToListAsync();
 
             var viewModelList = elogios.Select(e => new CreateElogioViewModel
             {
-                Id = e.Id, // Certifique-se de que a propriedade Id está mapeada corretamente
-                Email = e.Email,
+                Id = e.Id,
+                Email = e.TipoVisualizacao == TipoVisualizacao.Privado ? "Anonimo" : e.Email,
                 Opiniao = e.Opiniao,
                 Avaliacao = e.Avaliacao,
                 TipoVisualizacao = e.TipoVisualizacao,

@@ -41,7 +41,9 @@
         <!-- Tipo de Visualização -->
         <div class="form-group mt-3">
             <label asp-for="TipoVisualizacao" for="TipoVisualizacao" class="form-label">Visualização</label>
-            <select asp-for="TipoVisualizacao" asp-items="Html.GetEnumSelectList<TipoVisualizacao>()" id="TipoVisualizacao" class="form-control" required aria-label="Selecione o tipo de visualização">
+            <select asp-for="TipoVisualizacao" asp-items="Html.GetEnumSelectList<TipoVisualizacao>()"
+                    id="TipoVisualizacao" class="form-control" required
+                    aria-label="Selecione o tipo de visualização" onchange="handleTipoVisualizacao()">
                 <option value="" disabled selected>Selecione o tipo de visualização</option>
             </select>
             <span asp-validation-for="TipoVisualizacao" class="text-danger"></span>
@@ -62,18 +64,27 @@
 
     stars.forEach(star => {
         star.addEventListener('click', function() {
-            // Define o valor da avaliação no input oculto
             hiddenInput.value = this.getAttribute('data-value');
-
-            // Atualiza o estilo das estrelas
-            stars.forEach(star => {
-                star.style.color = '#ddd'; // Cor padrão
-            });
+            stars.forEach(star => star.style.color = '#ddd'); // Cor padrão
             for (let i = 0; i < this.getAttribute('data-value'); i++) {
                 stars[i].style.color = '#FFD700'; // Cor das estrelas selecionadas
             }
         });
     });
+
+    // Função para lidar com o tipo de visualização
+    function handleTipoVisualizacao() {
+        const tipoVisualizacao = document.getElementById('TipoVisualizacao').value;
+        const emailField = document.getElementById('Email');
+
+        if (tipoVisualizacao === 'Anonimo') {
+            emailField.value = 'Anonimo';
+            emailField.disabled = true; // Desabilitar para evitar edição
+        } else {
+            emailField.value = '';
+            emailField.disabled = false; // Reabilitar caso não seja anônimo
+        }
+    }
 
     // Função para desabilitar o botão de envio
     function disableButton(button) {

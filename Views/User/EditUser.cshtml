@@ -7,6 +7,9 @@
 <h2>Editar Utilizador</h2>
 
 <form id="EditUserForm" asp-action="EditUser" asp-controller="User" method="post">
+        @Html.AntiForgeryToken()
+
+
     <div>
         <label asp-for="FirstName">Primeiro Nome:</label>
         <input asp-for="FirstName" required />

@@ -60,7 +60,9 @@
     .SobreProjeto .scrollspy-example ul li {
         font-size: 1rem;
     }
-    
+    .btnMenu{
+        background-color: dodgerblue;
+    }
 }
 
 
@@ -105,6 +107,9 @@ body {
         width: 60%; /* Preenche a largura do contêiner */
         height: 100%; /* Preenche a altura do contêiner */
     }
+.justify-text {
+    text-align: justify;
+}
 
 
 /*-------------------------------------------------------------------------------------------------------------------------------------------------------------*/
